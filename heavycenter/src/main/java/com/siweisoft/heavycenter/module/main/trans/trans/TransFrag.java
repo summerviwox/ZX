@@ -41,8 +41,8 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onFristVisibleDelayInit() {
-        getP().getU().initRefresh(this,this);
-        getP().getU().initRecycle();
+        getUI().initRefresh(this,this);
+        getUI().initRecycle();
         onRefresh(null);
     }
 
@@ -53,13 +53,13 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 final TransDetailRes resultsBean = (TransDetailRes) v.getTag(R.id.data);
                 switch (v.getId()){
                     case R.id.bt_sure:
-                        getP().getD().signTrans(resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
+                        getDE().signTrans(resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
                             @Override
                             public void onResult(boolean success, String msg, TransSignRes o) {
                                 super.onResult(success, msg, o);
                                 if(success){
                                     resultsBean.setSignStatus(TransDetailRes.SING_STATUS_已确认);
-                                    getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
+                                    getUI().notifyDataSetChanged(getDE().getTransRes().getResults(),TransFrag.this);
                                 }
                             }
                         });
@@ -80,28 +80,28 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right2:
-                getP().getU().search(new OnFinishListener() {
+                getUI().search(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         boolean b = (boolean) o;
                         if(b){
-                            getP().getD().setPageIndex(0);
-                            getP().getU().autoRefresh();
+                            getDE().setPageIndex(0);
+                            getUI().autoRefresh();
                         }
                     }
                 });
                 break;
             case R.id.view:
-                if(getP().getU().bind.search.getRoot().getVisibility()==View.VISIBLE){
-                    getP().getU().bind.title.getRightIV2().setSelected(false);
-                    getP().getU().bind.search.getRoot().setVisibility(View.GONE);
+                if(getUI().bind.search.getRoot().getVisibility()==View.VISIBLE){
+                    getUI().bind.title.getRightIV2().setSelected(false);
+                    getUI().bind.search.getRoot().setVisibility(View.GONE);
                 }
                 break;
             case R.id.search:
-                getP().getU().refreshSearch();
+                getUI().refreshSearch();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -115,9 +115,9 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     @Override
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
-                        getP().getD().setComid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
-                        getP().getU().autoRefresh();
+                        getDE().setComid(data.getBranchId());
+                        getUI().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getUI().autoRefresh();
                     }
                 });
                 FragManager2.getInstance().setAnim(false).setHideLast(false).start(getBaseUIAct(),get容器(),tipFrag);
@@ -127,14 +127,14 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
+        getDE().setPageIndex(NetValue.PAGE_INDEX_START);
+        getDE().transs(getUI().getTransReq(getDE().getTransReq(getDE().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
                 //o= new Test().getTransRes();
-                getP().getD().getTransRes().getResults().clear();
-                getP().getD().getTransRes().getResults().addAll(o==null? new TransRes().getResults():o.getResults());
-                getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
+                getDE().getTransRes().getResults().clear();
+                getDE().getTransRes().getResults().addAll(o==null? new TransRes().getResults():o.getResults());
+                getUI().notifyDataSetChanged(getDE().getTransRes().getResults(),TransFrag.this);
             }
         });
 
@@ -142,13 +142,13 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
+        getDE().setPageIndex(getDE().getPageIndex()+1);
+        getDE().transs(getUI().getTransReq(getDE().getTransReq(getDE().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
                 //o = new Test().getTransRes();
-                getP().getD().getTransRes().getResults().addAll(o.getResults());
-                getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
+                getDE().getTransRes().getResults().addAll(o.getResults());
+                getUI().notifyDataSetChanged(getDE().getTransRes().getResults(),TransFrag.this);
             }
         });
     }

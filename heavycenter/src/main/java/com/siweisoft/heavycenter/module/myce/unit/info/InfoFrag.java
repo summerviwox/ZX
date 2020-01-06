@@ -22,10 +22,10 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     public void initdelay() {
         super.initdelay();
 
-        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
+        getDE().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
             @Override
             public void onSuccess(UnitInfo o) {
-                getP().getU().initinfo(o);
+                getUI().initinfo(o);
             }
         });
     }
@@ -35,17 +35,17 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                getP().getU().showTip(new View.OnClickListener() {
+                getUI().showTip(new View.OnClickListener() {
                 @Override
                 public void onClick(View vv) {
                     switch (vv.getId()){
                         case R.id.close:
                             break;
                         case R.id.sure:
-                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(InfoFrag.this,true) {
+                            getDE().unBinUnit(new UINetAdapter<UnBindResBean>(InfoFrag.this,true) {
                                 @Override
                                 public void onSuccess(UnBindResBean o) {
-                                    getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                    getDE().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                         @Override
                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                             super.onResult(success, msg, o);
@@ -59,8 +59,8 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                             });
                             break;
                     }
-                    if(getP().getU().getFragManager2()!=null){
-                    getP().getU().getFragManager2().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
+                    if(getUI().getFragManager2()!=null){
+                    getUI().getFragManager2().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
                     }
                 }
             });

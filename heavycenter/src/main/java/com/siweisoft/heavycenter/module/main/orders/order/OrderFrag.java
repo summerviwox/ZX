@@ -32,17 +32,17 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
         OrderFrag orderFrag = new OrderFrag();
         orderFrag.setArguments(new Bundle());
         orderFrag.getArguments().putString(ValueConstant.容器,容器);
-        orderFrag.getP().getD().setSTATUS(status);
+        orderFrag.getDE().setSTATUS(status);
         return orderFrag;
     }
 
     @Override
     protected void onFristVisibleDelayInit() {
-        getP().getU().initRefresh(this,this);
-        if(StringUtil.equals(OrderDAOpe.新订单,getP().getD().getSTATUS())){
-            getP().getU().autoRefresh();
+        getUI().initRefresh(this,this);
+        if(StringUtil.equals(OrderDAOpe.新订单,getDE().getSTATUS())){
+            getUI().autoRefresh();
         }else{
-            onRefresh(getP().getU().bind.refresh);
+            onRefresh(getUI().bind.refresh);
         }
     }
 
@@ -67,7 +67,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
                             @Override
                             public void onSuccess(ReceiptOrderRes o) {
                                 data.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_接收);
-                                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
+                                getUI().notifyDataSetChanged(getDE().getSTATUS(),getDE().getOrdersRes(),OrderFrag.this);
                             }
                         });
                         break;
@@ -77,7 +77,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
                             @Override
                             public void onSuccess(ReceiptOrderRes o) {
                                 data1.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_拒绝);
-                                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
+                                getUI().notifyDataSetChanged(getDE().getSTATUS(),getDE().getOrdersRes(),OrderFrag.this);
                             }
                         });
                         break;
@@ -88,28 +88,28 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
+        getDE().setPageIndex(getDE().getPageIndex()+1);
+        OrderDAOpe.orders(getDE().getOrdersFrag().getDE().getCompanyid(),getBaseUIAct(),getDE().getSTATUS(),getDE().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
                 //o = new Test().getOrdersRes();
-                getP().getD().getOrdersRes().getResults().addAll(o.getResults());
-                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
+                getDE().getOrdersRes().getResults().addAll(o.getResults());
+                getUI().notifyDataSetChanged(getDE().getSTATUS(),getDE().getOrdersRes(),OrderFrag.this);
             }
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
+        getDE().setPageIndex(NetValue.PAGE_INDEX_START);
+        OrderDAOpe.orders(getDE().getOrdersFrag().getDE().getCompanyid(),getBaseUIAct(),getDE().getSTATUS(),getDE().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
                 //o= new Test().getOrdersRes();
-                getP().getD().setOrdersRes(o);
-                getP().getD().getOrdersFrag().getP().getD().set较多的订单类型(o.getOrderType());
-                getP().getD().getOrdersFrag().getP().getU().refreshTopMenu(o);
-                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
+                getDE().setOrdersRes(o);
+                getDE().getOrdersFrag().getDE().set较多的订单类型(o.getOrderType());
+                getDE().getOrdersFrag().getUI().refreshTopMenu(o);
+                getUI().notifyDataSetChanged(getDE().getSTATUS(),getDE().getOrdersRes(),OrderFrag.this);
             }
         });
 

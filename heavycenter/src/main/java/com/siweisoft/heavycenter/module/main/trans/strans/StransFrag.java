@@ -28,26 +28,26 @@ public class StransFrag extends AppFrag<StransUIOpe,StransDAOpe> implements OnRe
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().getStransReq().setOrdersId(getArguments().getInt(ValueConstant.DATA_DATA,0));
-        getP().getD().getStransReq().setSignStatus(getArguments().getInt(ValueConstant.DATA_TYPE,0));
-        getP().getD().getStransReq().setPageSize(1000);
-        getP().getD().getStransReq().setPageIndex(1);
+        getDE().getStransReq().setOrdersId(getArguments().getInt(ValueConstant.DATA_DATA,0));
+        getDE().getStransReq().setSignStatus(getArguments().getInt(ValueConstant.DATA_TYPE,0));
+        getDE().getStransReq().setPageSize(1000);
+        getDE().getStransReq().setPageIndex(1);
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().autoRefresh();
+        getUI().autoRefresh();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        StransDAOpe.stranss(getContext(), getP().getD().getStransReq(), new UINetAdapter<TransRes>(this, UINetAdapter.Loading) {
+        StransDAOpe.stranss(getContext(), getDE().getStransReq(), new UINetAdapter<TransRes>(this, UINetAdapter.Loading) {
             @Override
             public void onSuccess(TransRes o) {
                 super.onSuccess(o);
-                getP().getD().addData(o);
-                getP().getU().LoadListData(getP().getD().getData());
+                getDE().addData(o);
+                getUI().LoadListData(getDE().getData());
             }
         });
     }

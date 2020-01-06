@@ -31,7 +31,7 @@ public class TitleTipFrag extends BaseUIFrag<TitleTipUIOpe,TitleTipDAOpe> implem
         TitleTipFrag titleTipFrag = new TitleTipFrag();
         titleTipFrag.setArguments(new Bundle());
         titleTipFrag.getArguments().putSerializable(ValueConstant.DATA_DATA,coms );
-        titleTipFrag.getP().getD().setComs(coms);
+        titleTipFrag.getDE().setComs(coms);
         return titleTipFrag;
     }
 
@@ -41,15 +41,15 @@ public class TitleTipFrag extends BaseUIFrag<TitleTipUIOpe,TitleTipDAOpe> implem
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.llll).setOnClickListener(this);
-        if(getP().getD().getComs()!=null){
-            getP().getU().init(getP().getD().getComs(),this);
+        if(getDE().getComs()!=null){
+            getUI().init(getDE().getComs(),this);
         }
     }
 
 
     @Override
     public void onClick(View v) {
-        ViewAnimator.animate(getP().getU().bind.recycle).duration(150).zoomOut().onStop(new AnimationListener.Stop() {
+        ViewAnimator.animate(getUI().bind.recycle).duration(150).zoomOut().onStop(new AnimationListener.Stop() {
             @Override
             public void onStop() {
                 FragManager2.getInstance()
@@ -65,7 +65,7 @@ public class TitleTipFrag extends BaseUIFrag<TitleTipUIOpe,TitleTipDAOpe> implem
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
-                ViewAnimator.animate(getP().getU().bind.recycle).duration(300).zoomOut().onStop(new AnimationListener.Stop() {
+                ViewAnimator.animate(getUI().bind.recycle).duration(300).zoomOut().onStop(new AnimationListener.Stop() {
                     @Override
                     public void onStop() {
                         FragManager2.getInstance()

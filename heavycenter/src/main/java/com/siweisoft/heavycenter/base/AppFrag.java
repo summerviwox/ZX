@@ -15,16 +15,13 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
+import com.summer.x.base.ui.DE;
+import com.summer.x.base.ui.UI;
+import com.summer.x.base.ui.VA;
+import com.summer.x.base.ui.XFragment;
 
-public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {
+public abstract class AppFrag<A extends UI, B extends DE,C extends VA> extends XFragment<A,B,C> {
 
-
-
-    @Override
-    public void initdelay() {
-        super.initdelay();
-
-    }
 
     @Optional
     @OnClick({R.id.ftv_back,R.id.ftv_right})

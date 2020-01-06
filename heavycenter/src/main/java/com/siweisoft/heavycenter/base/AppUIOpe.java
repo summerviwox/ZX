@@ -6,9 +6,10 @@ import android.content.Context;
 
 import androidx.databinding.ViewDataBinding;
 
-import com.android.lib.base.ope.BaseUIOpe;
+import com.summer.x.base.ui.UI;
 
-public class AppUIOpe<A extends ViewDataBinding>  extends BaseUIOpe<A> {
+
+public class AppUIOpe<A extends ViewDataBinding>  extends UI<A> {
 
     public AppUIOpe(){
 

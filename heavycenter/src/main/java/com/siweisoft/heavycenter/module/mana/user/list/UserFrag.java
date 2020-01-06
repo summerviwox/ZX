@@ -44,7 +44,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
 
                 break;
             case UserValue.选择用户:
-                getP().getU().setSwipe(false);
+                getUI().setSwipe(false);
                 break;
 
         }
@@ -53,8 +53,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRecycle();
-        getP().getU().initRefresh(this,this);
+        getUI().initRecycle();
+        getUI().initRefresh(this,this);
         onRefresh(null);
 
 
@@ -74,17 +74,17 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().finishLoadmore();
+        getUI().finishLoadmore();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(this) {
+        getDE().unitUsers(new UINetAdapter<UnitUserResBean>(this) {
             @Override
             public void onSuccess(UnitUserResBean o) {
                 //o= new Test().getUnitUserResBean();
-                getP().getU().LoadListData(o,UserFrag.this);
-                getP().getU().finishRefresh();
+                getUI().LoadListData(o,UserFrag.this);
+                getUI().finishRefresh();
             }
         });
     }
@@ -106,8 +106,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                             case 0:
                                 switch (resultsBean.getBindCompanyState()){
                                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                                        if(getP().getD().canUnBind(resultsBean)){
-                                            getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(this,true) {
+                                        if(getDE().canUnBind(resultsBean)){
+                                            getDE().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -117,7 +117,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         }
                                         break;
                                     default:
-                                        getP().getD().addUser(resultsBean, new UINetAdapter<AddUserResBean>(this,true) {
+                                        getDE().addUser(resultsBean, new UINetAdapter<AddUserResBean>(this,true) {
                                             @Override
                                             public void onSuccess(AddUserResBean o) {
                                                 onRefresh(null);
@@ -164,7 +164,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                     return;
                 }
                 UnitUserResBean.ResultsBean data1 = (UnitUserResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
-                getP().getU().showBindTip(data1.getTrueName(),get容器(), new View.OnClickListener() {
+                getUI().showBindTip(data1.getTrueName(),get容器(), new View.OnClickListener() {
                     @Override
                     public void onClick(View vv) {
                         switch (vv.getId()){
@@ -172,7 +172,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 break;
                             case R.id.tv_y:
 
-                                getP().getD().setUserRole(data1.getUserId(), new UINetAdapter<UserRoleRes>(UserFrag.this) {
+                                getDE().setUserRole(data1.getUserId(), new UINetAdapter<UserRoleRes>(UserFrag.this) {
                                     @Override
                                     public void onSuccess(UserRoleRes o) {
                                         super.onSuccess(o);
@@ -182,7 +182,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 });
                                 break;
                         }
-                        getP().getU().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
+                        getUI().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
                     }
                 });
                 break;

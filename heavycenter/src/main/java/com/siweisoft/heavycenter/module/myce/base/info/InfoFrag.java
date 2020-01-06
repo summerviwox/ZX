@@ -17,13 +17,13 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initScan();
+        getUI().initScan();
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
-       // getP().getU().initScan();
+       // getUI().initScan();
 
     }
 

@@ -27,7 +27,7 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
     public void showTip(String title,WeightMsg weightMsg,View.OnClickListener onClickListener){
         WeightTipsFrag weightTipsFrag = new WeightTipsFrag();
         weightTipsFrag.setOnClickListener(onClickListener);
-        weightTipsFrag.getP().getD().setWeightMsg(weightMsg);
+        weightTipsFrag.getDE().setWeightMsg(weightMsg);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
         fragManager2.start(getActivity(), getFrag().get容器(),weightTipsFrag);
 

@@ -5,14 +5,11 @@ package com.siweisoft.heavycenter.base;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.summer.x.base.ui.DE;
 
-public class AppDAOpe extends BaseDAOpe {
+public class AppDAOpe extends DE {
 
     public AppDAOpe(){
 
-    }
-
-    public AppDAOpe(Context context) {
-        super(context);
     }
 }

@@ -40,23 +40,23 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initUI(getArguments().getString(ValueConstant.DATA_TYPE));
+        getUI().initUI(getArguments().getString(ValueConstant.DATA_TYPE));
         if("新建单位".equals(getArguments().getString(ValueConstant.DATA_TYPE))){
-            getP().getU().unitCheck(this);
+            getUI().unitCheck(this);
         }
     }
 
     private void getInfoAndInit(final OnFinishListener listener){
-        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
+        getDE().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
             @Override
             public void onSuccess(UnitInfo o) {
-                getP().getD().setUnit(o);
+                getDE().setUnit(o);
                 if(o==null){
                     return;
                 }
-                getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
-                getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
-                getP().getU().initinfo(getP().getD().getUnit());
+                getDE().getUnit().setBelongAreaDes(getDE().getUnit().getBelongArea());
+                getDE().getUnit().setBelongArea(getDE().getUnit().getBelongAreaNo());
+                getUI().initinfo(getDE().getUnit());
                 if(listener!=null){
                     listener.onFinish(null);
                 }
@@ -77,7 +77,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
             case 新建单位:
                 break;
             case 修改单位信息:
-                getP().getU().updateInfo();
+                getUI().updateInfo();
                 getInfoAndInit(null);
                 break;
         }
@@ -105,17 +105,17 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
             case R.id.ftv_right2:
                 switch (getArguments().getString(ValueConstant.DATA_TYPE)){
                     case 展示单位信息:
-                        getP().getU().showTip(new View.OnClickListener() {
+                        getUI().showTip(new View.OnClickListener() {
                             @Override
                             public void onClick(View vv) {
                                 switch (vv.getId()){
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.Loading,true) {
+                                        getDE().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.Loading,true) {
                                             @Override
                                             public void onSuccess(UnBindResBean o) {
-                                                getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                getDE().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                                     @Override
                                                     public void onResult(boolean success, String msg, LoginResBean o) {
                                                         super.onResult(success, msg, o);
@@ -130,15 +130,15 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                                         });
                                         break;
                                 }
-                                if(getP().getU().getFragManager2()!=null){
-                                    getP().getU().getFragManager2().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
+                                if(getUI().getFragManager2()!=null){
+                                    getUI().getFragManager2().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
                                 }
                             }
                         });
                         break;
                     case 新建单位:
-                        if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.Loading,true) {
+                        if(getUI().canGo()){
+                            getDE().createUnit(getUI().getNewReqBean(getDE().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -148,14 +148,14 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                         }
                         break;
                     case 修改单位信息:
-                        if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.Loading,true) {
+                        if(getUI().canGo()){
+                            getDE().updateUnit(getUI().getUpdateUnitReq(getDE().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getInfoAndInit(new OnFinishListener() {
                                         @Override
                                         public void onFinish(Object o) {
-                                            ((MainAct)getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                            ((MainAct)getBaseUIAct()).getDE().getMyceFrag().initUINET();
                                             getBaseUIAct().onBackPressed();
                                         }
                                     });
@@ -177,26 +177,26 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                     return;
                 }
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA);
-                getP().getD().getUnit().setCompanyLng(unitInfo.getCompanyLng());
-                getP().getD().getUnit().setCompanyLat(unitInfo.getCompanyLat());
-                getP().getD().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());
-                getP().getU().initAddrinfo(getP().getD().getUnit());
+                getDE().getUnit().setCompanyLng(unitInfo.getCompanyLng());
+                getDE().getUnit().setCompanyLat(unitInfo.getCompanyLat());
+                getDE().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());
+                getUI().initAddrinfo(getDE().getUnit());
                 break;
             case 3:
                 if(bundle!=null && bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
                     UnitInfo unit = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                    getP().getD().getUnit().setParentCompanyName(unit.getCompanyName());
-                    getP().getD().getUnit().setParentCompanyId(unit.getTrueComId());
-                    getP().getU().initUPUnitinfo(getP().getD().getUnit());
+                    getDE().getUnit().setParentCompanyName(unit.getCompanyName());
+                    getDE().getUnit().setParentCompanyId(unit.getTrueComId());
+                    getUI().initUPUnitinfo(getDE().getUnit());
                 }
                 break;
             case 4:
                     if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_INTENT2,false)){
                     return ;
                 }
-                getP().getD().getUnit().setBelongArea(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES2)));
-                getP().getD().getUnit().setBelongAreaDes(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES)));
-                getP().getU().initAreaInfo(getP().getD().getUnit());
+                getDE().getUnit().setBelongArea(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES2)));
+                getDE().getUnit().setBelongAreaDes(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES)));
+                getUI().initAreaInfo(getDE().getUnit());
                 break;
         }
     }
@@ -204,16 +204,16 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
     @Override
     public void onFinish(Object o) {
         String s = o.toString();
-        getP().getD().searchUnitInfo(s, new UINetAdapter<SearchResBean>(this) {
+        getDE().searchUnitInfo(s, new UINetAdapter<SearchResBean>(this) {
             @Override
             public void onSuccess(final SearchResBean o) {
                 super.onSuccess(o);
                 if(o.getResults()!=null&& o.getResults().get(0)!=null){
-                    getP().getU().showUnitExistTip(get容器(), o.getResults().get(0).getCompanyName(), new View.OnClickListener() {
+                    getUI().showUnitExistTip(get容器(), o.getResults().get(0).getCompanyName(), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(getP().getU().getUnitexistfragm()!=null){
-                                getP().getU().getUnitexistfragm().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
+                            if(getUI().getUnitexistfragm()!=null){
+                                getUI().getUnitexistfragm().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
                             }
                             switch (v.getId()){
                                 case R.id.sure:

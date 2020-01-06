@@ -18,7 +18,7 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initBg(getP().getD().getImageUrl());
+        getUI().initBg(getDE().getImageUrl());
 
     }
 
@@ -28,8 +28,8 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.regist:
-                if(getP().getU().go()){
-                    getP().getD().updatePwd(getP().getU().getforGetReqBean(), new com.android.lib.network.news.UINetAdapter<ForGetResBean>(this,true) {
+                if(getUI().go()){
+                    getDE().updatePwd(getUI().getforGetReqBean(), new com.android.lib.network.news.UINetAdapter<ForGetResBean>(this,true) {
                         @Override
                         public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                             if(baseResBean.getCode().equals("200")){
@@ -44,16 +44,16 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                 }
                 break;
             case R.id.tv_code:
-                if(getP().getU().canGetCode()){
-                    getP().getD().getCode(getP().getU().getCodeReqBean());
-                    getP().getD().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
+                if(getUI().canGetCode()){
+                    getDE().getCode(getUI().getCodeReqBean());
+                    getDE().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
                         @Override
                         public Void onStarLoading(Object o) {
-                            getP().getU().bind.code.getCodeText().setText((60 - (int) o) + "StransUIOpe");
+                            getUI().bind.code.getCodeText().setText((60 - (int) o) + "StransUIOpe");
                             if ((60 - (int) o) <= 0) {
-                                getP().getU().bind.code.setEnabled(true);
-                                getP().getD().getThreadUtil().stop();
-                                getP().getU().bind.code.getCodeText().setText("重新获取验证码");
+                                getUI().bind.code.setEnabled(true);
+                                getDE().getThreadUtil().stop();
+                                getUI().bind.code.getCodeText().setText("重新获取验证码");
                             }
                             return null;
                         }

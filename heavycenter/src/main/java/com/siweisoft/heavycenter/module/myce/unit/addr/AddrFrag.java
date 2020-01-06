@@ -35,29 +35,29 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
     public void initdelay() {
         super.initdelay();
 
-        getP().getD().getMapUtil().init(getBaseUIAct(),true);
-        getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
+        getDE().getMapUtil().init(getBaseUIAct(),true);
+        getDE().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
-                getP().getU().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
-                getP().getU().bind.tvCity.setText(StringUtil.getStr(bdLocation.getCity()));
-                getP().getD().getUnitInfo().setCompanyAddress(bdLocation.getAddrStr());
-                getP().getD().getUnitInfo().setCompanyLat(bdLocation.getLatitude());
-                getP().getD().getUnitInfo().setCompanyLng(bdLocation.getLongitude());
+                getUI().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
+                getUI().bind.tvCity.setText(StringUtil.getStr(bdLocation.getCity()));
+                getDE().getUnitInfo().setCompanyAddress(bdLocation.getAddrStr());
+                getDE().getUnitInfo().setCompanyLat(bdLocation.getLatitude());
+                getDE().getUnitInfo().setCompanyLng(bdLocation.getLongitude());
             }
         });
-        getP().getD().startMap();
-        getP().getU().LoadListData(getP().getD().getAddrs(),AddrFrag.this);
-        getP().getU().initInput(new OnFinishListener() {
+        getDE().startMap();
+        getUI().LoadListData(getDE().getAddrs(),AddrFrag.this);
+        getUI().initInput(new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                if(getP().getU().canLocal()){
-                    getP().getD().getMapUtil().searchNeayBy(getP().getU().bind.tvCity.getText().toString(),o.toString() ,new OnGetPoiSearchResultListener() {
+                if(getUI().canLocal()){
+                    getDE().getMapUtil().searchNeayBy(getUI().bind.tvCity.getText().toString(),o.toString() ,new OnGetPoiSearchResultListener() {
                         @Override
                         public void onGetPoiResult(PoiResult poiResult) {
                             if(poiResult!=null&&poiResult.getAllPoi()!=null){
-                                getP().getD().setAddrs(poiResult.getAllPoi());
-                                getP().getU().notifyDataSetChanged();
+                                getDE().setAddrs(poiResult.getAllPoi());
+                                getUI().notifyDataSetChanged();
                             }
                         }
 
@@ -81,10 +81,10 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 PoiInfo poiInfo = (PoiInfo) v.getTag(R.id.data);
-                getP().getD().getUnitInfo().setCompanyAddress(poiInfo.address);
-                getP().getD().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
-                getP().getD().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
-                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
+                getDE().getUnitInfo().setCompanyAddress(poiInfo.address);
+                getDE().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
+                getDE().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
+                getArguments().putSerializable(ValueConstant.DATA_DATA,getDE().getUnitInfo());
                 getBaseUIAct().onBackPressed();
                 break;
         }
@@ -93,7 +93,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getP().getD().stopMap();
+        getDE().stopMap();
     }
 
     @OnClick({R.id.tv_addr,R.id.iv_local,R.id.tv_local,R.id.tv_city})
@@ -101,23 +101,23 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
         super.onClick(v);
         switch (v.getId()){
             case R.id.tv_addr:
-                if(NullUtil.isStrEmpty(getP().getU().bind.tvAddr.getText().toString())){
+                if(NullUtil.isStrEmpty(getUI().bind.tvAddr.getText().toString())){
                     ToastUtil.getInstance().showShort(getActivity(),"当前地址为空 请重新定位");
                     return;
                 }
-                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
+                getArguments().putSerializable(ValueConstant.DATA_DATA,getDE().getUnitInfo());
                 getBaseUIAct().onBackPressed();
                 break;
             case R.id.iv_local:
             case R.id.tv_local:
-                getP().getD().getMapUtil().init(getBaseUIAct(),true);
-                getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
+                getDE().getMapUtil().init(getBaseUIAct(),true);
+                getDE().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
                     @Override
                     public void onReceiveLocation(BDLocation bdLocation) {
-                        getP().getU().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
+                        getUI().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
                     }
                 });
-                getP().getD().startMap();
+                getDE().startMap();
                 break;
             case R.id.tv_city:
                 Bundle bundle = new Bundle();
@@ -135,7 +135,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 if(bundle==null|| bundle.getString(ValueConstant.DATA_RES)==null){
                     return;
                 }
-               getP().getU().bind.tvCity.setText(StringUtil.getStr( bundle.getString(ValueConstant.DATA_RES)));
+               getUI().bind.tvCity.setText(StringUtil.getStr( bundle.getString(ValueConstant.DATA_RES)));
                 break;
         }
     }

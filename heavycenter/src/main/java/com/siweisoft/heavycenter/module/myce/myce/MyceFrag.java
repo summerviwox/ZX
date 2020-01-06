@@ -55,22 +55,22 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().is绑定了单位());
+        getUI().hideOrShowManageFunction(((MainAct)(getActivity())).getDE().is绑定了单位());
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initUI();
+        getUI().initUI();
     }
 
     public void init(){
-        getP().getU().initUI();
-        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().is绑定了单位());
+        getUI().initUI();
+        getUI().hideOrShowManageFunction(((MainAct)(getActivity())).getDE().is绑定了单位());
     }
 
     public void initUINET(){
-        getP().getD().getInfo(new UINetAdapter<LoginResBean>(this) {
+        getDE().getInfo(new UINetAdapter<LoginResBean>(this) {
             @Override
             public void onSuccess(LoginResBean o) {
                 LocalValue.save登录返回信息(o);
@@ -83,7 +83,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @OnClick({R.id.item_car,R.id.tv_name,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head,R.id.item_setting,R.id.iv_car,R.id.iv_dirver,R.id.item_driver})
     public void onClick(View v){
 
-        //((MainAct)activity).getP().getU().unSelectBottomMenu();
+        //((MainAct)activity).getUI().unSelectBottomMenu();
         FragManager2.getInstance().clear(getBaseUIAct(), MainValue.主界面);
         switch (v.getId()){
             case R.id.login:
@@ -156,7 +156,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 //
 //                    MainAct mainAct = (MainAct) getBaseUIAct();
 //                    getFragmentManager().beginTransaction()
-//                            .add(mainAct.getP().getU().bind.incloud.hvLeftDrawer.getId(), sharedElementFragment2)
+//                            .add(mainAct.getUI().bind.incloud.hvLeftDrawer.getId(), sharedElementFragment2)
 //                            .hide(this)
 //                            .setReorderingAllowed(true)
 //                            .addToBackStack(null)
@@ -184,7 +184,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIAct().setMoudle(MainValue.主界面);
-        ((MainAct)getActivity()).getP().getU().switchDrawer();
+        ((MainAct)getActivity()).getUI().switchDrawer();
     }
 
     @Override
@@ -217,7 +217,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         final String finalType = type;
-        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(this,true) {
+        getDE().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(this,true) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
@@ -232,26 +232,26 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.头像:
                                 loginResBean.setUserPhoto(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getU().initUI();
+                                getUI().initUI();
                                 ToastUtil.getInstance().showShort(getActivity(),"更换头像成功");
                                 break;
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
+                                getDE().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
                                     @Override
                                     public void onSuccess(UpdateCarRes o) {
-                                        getP().getU().initUI();
+                                        getUI().initUI();
                                     }
                                 });
                                 break;
                             case UpdateHeadReqBean.行驶证照片:
                                 loginResBean.setVehicleLicensePhoto(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
+                                getDE().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
                                     @Override
                                     public void onSuccess(UpdateCarRes o) {
-                                        getP().getU().initUI();
+                                        getUI().initUI();
                                     }
                                 });
                                 break;

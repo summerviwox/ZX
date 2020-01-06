@@ -20,7 +20,7 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initTxt();
+        getUI().initTxt();
     }
 
     @OnClick({R.id.ftv_right2})
@@ -28,14 +28,14 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                if(getP().getU().canGo()){
-                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(this,true) {
+                if(getUI().canGo()){
+                    getDE().reName(getUI().getReNameReqBean(), new UINetAdapter<ReNameResBean>(this,true) {
                         @Override
                         public void onSuccess(ReNameResBean o) {
                             LoginResBean loginResBean = LocalValue.get登录返回信息();
-                            loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
+                            loginResBean.setTrueName(getUI().getReNameReqBean().getTrueName());
                             LocalValue.save登录返回信息(loginResBean);
-                            ((MainAct)getBaseUIAct()).getP().getD().getMyceFrag().getP().getU().initUI();
+                            ((MainAct)getBaseUIAct()).getDE().getMyceFrag().getUI().initUI();
                             getBaseUIAct().onBackPressed();
                         }
                     });

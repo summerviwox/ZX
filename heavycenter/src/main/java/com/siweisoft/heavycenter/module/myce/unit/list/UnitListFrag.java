@@ -43,10 +43,10 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRefresh(this);
-        getP().getU().initRecycle();
+        getUI().initRefresh(this);
+        getUI().initRecycle();
         onRefresh(null);
-        getP().getU().实时搜索(this);
+        getUI().实时搜索(this);
     }
 
 
@@ -93,10 +93,10 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                         });
                         break;
                     default:
-                        getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(UnitListFrag.this){
+                        getDE().searchUnit(getUI().getSearchReqBean(),new UINetAdapter<SearchResBean>(UnitListFrag.this){
                             @Override
                             public void onSuccess(SearchResBean o) {
-                                getP().getU().LoadListData(o,UnitListFrag.this);
+                                getUI().LoadListData(o,UnitListFrag.this);
                             }
                         });
                         break;
@@ -115,22 +115,22 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                     return;
                 }
                 final UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
-                getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(this) {
+                getDE().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(this) {
                     @Override
                     public void onSuccess(UnitInfo o) {
                         if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
-                            getP().getU().showTip(get容器(),new View.OnClickListener(){
+                            getUI().showTip(get容器(),new View.OnClickListener(){
                                 @Override
                                 public void onClick(View vv) {
                                     switch (vv.getId()){
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                                            getDE().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
-                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                    getDE().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                                         @Override
                                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                                             super.onResult(success, msg, o);
@@ -149,19 +149,19 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                                 }
                             });
                         }else{
-                            getP().getU().showBindTip(get容器(),new View.OnClickListener(){
+                            getUI().showBindTip(get容器(),new View.OnClickListener(){
                                 @Override
                                 public void onClick(View vv) {
                                     switch (vv.getId()){
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this) {
+                                            getDE().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this) {
                                                 @Override
                                                 public void onSuccess(BindResBean o) {
                                                     super.onSuccess(o);
                                                     ToastUtil.getInstance().showShort(getBaseUIAct(),"用户申请绑定单位成功");
-                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                    getDE().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                                         @Override
                                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                                             super.onResult(success, msg, o);
@@ -182,7 +182,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                                             });
                                             break;
                                     }
-                                    getP().getU().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
+                                    getUI().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
                                 }
                             });
                         }
@@ -197,7 +197,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getU().clearKey();
+        getUI().clearKey();
         switch (getArguments().getInt(ValueConstant.DATA_DATA)){
             case UnitListDAOpe.历史发货单位:
                 UnitListDAOpe.getHistoryFhUnit(getContext(), "", new UINetAdapter<ListResBean>(this,UINetAdapter.Loading){
@@ -218,7 +218,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                 });
                 break;
                 default:
-                    getP().getD().getData(new UINetAdapter<ListResBean>(this,UINetAdapter.Loading) {
+                    getDE().getData(new UINetAdapter<ListResBean>(this,UINetAdapter.Loading) {
                         @Override
                         public void onResult(boolean success, String msg, ListResBean o) {
                             super.onResult(success, msg, o);
@@ -231,9 +231,9 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
     }
 
     private void deal(ListResBean o){
-        getP().getD().setNetUnits(o);
-        getP().getU().LoadListData(getP().getD().getSelUnits(""),UnitListFrag.this);
-        getP().getU().finishRefresh();
+        getDE().setNetUnits(o);
+        getUI().LoadListData(getDE().getSelUnits(""),UnitListFrag.this);
+        getUI().finishRefresh();
     }
 
 
@@ -267,7 +267,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
 
     @Override
     public void onFinish(Object o) {
-        getP().getU().LoadListData(getP().getD().getSelUnits(o.toString()),UnitListFrag.this);
+        getUI().LoadListData(getDE().getSelUnits(o.toString()),UnitListFrag.this);
     }
 
 
@@ -276,25 +276,25 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
         if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!= UnitListDAOpe.绑定单位){
             getBaseUIAct().onBackPressed();
         }else{
-            getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+            getDE().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
                 @Override
                 public void onResult(boolean success, String msg, UnitInfo o) {
                     super.onResult(success, msg, o);
                     if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
-                        getP().getU().showTip(get容器(),new View.OnClickListener(){
+                        getUI().showTip(get容器(),new View.OnClickListener(){
                             @Override
                             public void onClick(View vv) {
                                 switch (vv.getId()){
                                     case R.id.tv_n:
                                         break;
                                     case R.id.tv_y:
-                                        getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                                        getDE().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                                             @Override
                                             public void onResult(boolean success, String msg, BindResBean o) {
                                                 super.onResult(success, msg, o);
                                                 if(success){
                                                     ToastUtil.getInstance().showLong(getContext(),"绑定成功");
-                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                    getDE().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                                         @Override
                                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                                             super.onResult(success, msg, o);
@@ -314,13 +314,13 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                             }
                         });
                     }else{
-                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                        getDE().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                             @Override
                             public void onResult(boolean success, String msg, BindResBean o) {
                                 super.onResult(success, msg, o);
                                 if(success){
                                     ToastUtil.getInstance().showLong(getContext(),"绑定成功");
-                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                    getDE().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                         @Override
                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                             super.onResult(success, msg, o);

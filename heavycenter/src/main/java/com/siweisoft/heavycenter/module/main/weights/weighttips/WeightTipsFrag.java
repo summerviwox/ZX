@@ -19,7 +19,7 @@ public class WeightTipsFrag  extends BaseUIFrag<WeightTipsUIOpe,WeightTipsDAOpe>
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().init(getP().getD().getWeightMsg());
+        getUI().init(getDE().getWeightMsg());
     }
 
     @Optional
@@ -27,11 +27,11 @@ public class WeightTipsFrag  extends BaseUIFrag<WeightTipsUIOpe,WeightTipsDAOpe>
     public void onClick(View v) {
         super.onClick(v);
         if(onClickListener!=null ){
-            if(NullUtil.isStrEmpty(getP().getU().bind.tvNewvalue.getText().toString())){
+            if(NullUtil.isStrEmpty(getUI().bind.tvNewvalue.getText().toString())){
                 v.setTag(R.id.data,0d);
                 return;
             }
-            v.setTag(R.id.data,Double.parseDouble(getP().getU().bind.tvNewvalue.getText().toString()));
+            v.setTag(R.id.data,Double.parseDouble(getUI().bind.tvNewvalue.getText().toString()));
             onClickListener.onClick(v);
         }
 

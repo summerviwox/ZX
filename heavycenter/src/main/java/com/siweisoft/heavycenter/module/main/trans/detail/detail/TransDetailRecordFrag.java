@@ -24,6 +24,6 @@ public class TransDetailRecordFrag extends AppFrag<TransDetailRecordUIOpe,TransD
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initUI((List<TransDetailRes.DeliverRecordListBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
+        getUI().initUI((List<TransDetailRes.DeliverRecordListBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
     }
 }

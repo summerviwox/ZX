@@ -17,23 +17,23 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
 
     @Override
     public void onFristVisibleInit() {
-        getP().getD().getMapUtil().init(getActivity());
-        getP().getD().getMapUtil().setScantime(10000);
-        getP().getD().getMapUtil().registerLocationListener(getActivity(), new BDAbstractLocationListener() {
+        getDE().getMapUtil().init(getActivity());
+        getDE().getMapUtil().setScantime(10000);
+        getDE().getMapUtil().registerLocationListener(getActivity(), new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
-                getP().getD().getMapUtil().animateMapStatus(getP().getU().bind.map.getMap(),bdLocation);
-                getP().getD().getMapUtil().setMyLocationData(getP().getU().bind.map.getMap(),bdLocation);
+                getDE().getMapUtil().animateMapStatus(getUI().bind.map.getMap(),bdLocation);
+                getDE().getMapUtil().setMyLocationData(getUI().bind.map.getMap(),bdLocation);
             }
         });
-        getP().getD().startMap();
+        getDE().startMap();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)getActivity()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -44,12 +44,12 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
     }
 
     public void local(BDLocation bdLocation){
-        getP().getD().getMapUtil().animateMapStatus2(getP().getU().bind.map.getMap(),bdLocation);
+        getDE().getMapUtil().animateMapStatus2(getUI().bind.map.getMap(),bdLocation);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getP().getD().stopMap();
+        getDE().stopMap();
     }
 }

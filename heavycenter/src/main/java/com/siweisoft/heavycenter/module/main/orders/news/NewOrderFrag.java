@@ -40,7 +40,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.发货);
+        getDE().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.发货);
     }
 
     @OnClick({R.id.item_addr,R.id.item_wuliname,R.id.item_wuliguige,R.id.item_unit,R.id.item_starttime,R.id.item_rule,R.id.tv_send,R.id.tv_receipt,R.id.ftv_right2})
@@ -57,15 +57,15 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NamesFrag(),bundle);
                 break;
             case R.id.item_wuliguige:
-                if(getP().getU().canGugeGo(getP().getD().getNewsOrderReqBean())){
+                if(getUI().canGugeGo(getDE().getNewsOrderReqBean())){
                     bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.物料规格);
-                    bundle.putInt(ValueConstant.DATA_POSITION2,getP().getD().getNewsOrderReqBean().getProductId());
+                    bundle.putInt(ValueConstant.DATA_POSITION2,getDE().getNewsOrderReqBean().getProductId());
                     FragManager2.getInstance().start(getBaseUIAct(), get容器(),new SpecsFrag(),bundle);
                 }
                 break;
             case R.id.item_unit:
                 bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.收货单位);
-                switch (getP().getD().getNewsOrderReqBean().getOrderType()){
+                switch (getDE().getNewsOrderReqBean().getOrderType()){
                     case NewsOrderReqBean.发货:
                         FragManager2.getInstance().start(getBaseUIAct(), get容器(),UnitListFrag.getInstance(UnitListDAOpe.历史收货单位),bundle);
                         break;
@@ -81,8 +81,8 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
                         String s = DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(millseconds));
-                        getP().getD().getNewsOrderReqBean().setPlanTime(s);
-                        getP().getU().init(getP().getD().getNewsOrderReqBean());
+                        getDE().getNewsOrderReqBean().setPlanTime(s);
+                        getUI().init(getDE().getNewsOrderReqBean());
                     }
                 });
                 TimePickerDialog timePickerDialog = builder.setType(Type.MONTH_DAY_HOUR_MIN).setTitleStringId("计划开始时间").build();
@@ -94,16 +94,16 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new RuleFrag(),bundle);
                 break;
             case R.id.tv_receipt:
-                getP().getU().onClick(v);
-                getP().getD().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.收货);
+                getUI().onClick(v);
+                getDE().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.收货);
                 break;
             case R.id.tv_send:
-                getP().getU().onClick(v);
-                getP().getD().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.发货);
+                getUI().onClick(v);
+                getDE().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.发货);
                 break;
             case R.id.ftv_right2:
-                if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.Loading,true) {
+                if(getUI().canGo()){
+                    getDE().newOrder(getUI().getNewsOrderReqBean(getDE().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.Loading,true) {
 
                         @Override
                         public void onResult(boolean success, String msg, NewOrderRes o) {
@@ -131,55 +131,55 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                     return;
                 }
                 NamesRes.ResultsBean data = (NamesRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                getP().getD().getNewsOrderReqBean().setProductName(data.getMaterielName());
-                getP().getD().getNewsOrderReqBean().setProductId(data.getId());
-                getP().getD().getNewsOrderReqBean().setSpecification(null);
+                getDE().getNewsOrderReqBean().setProductName(data.getMaterielName());
+                getDE().getNewsOrderReqBean().setProductId(data.getId());
+                getDE().getNewsOrderReqBean().setSpecification(null);
                 break;
             case NewOrderValue.物料规格:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
                     return;
                 }
                 SpecsRes.ResultsBean data1 = (SpecsRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                getP().getD().getNewsOrderReqBean().setSpecification(data1.getSpecifications());
+                getDE().getNewsOrderReqBean().setSpecification(data1.getSpecifications());
                 break;
             case NewOrderValue.收货单位:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
                     return;
                 }
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
-                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getTrueComId());
+                if(NewsOrderReqBean.发货.equals(getDE().getNewsOrderReqBean().getOrderType())){
+                    getDE().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
+                    getDE().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getTrueComId());
                 }else{
-                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getTrueComId());
+                    getDE().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
+                    getDE().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getTrueComId());
                 }
-                getP().getD().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
-                getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getTrueComId());
-                getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
+                getDE().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
+                getDE().getNewsOrderReqBean().setTempCompany(unitInfo.getTrueComId());
+                getDE().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
                 break;
             case NewOrderValue.备用签收规则:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
                     return;
                 }
                 Rule rule = (Rule) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                getP().getD().getNewsOrderReqBean().setSignRule(rule.getKey());
-                getP().getD().getNewsOrderReqBean().setSignRuleValue(rule.getValue());
+                getDE().getNewsOrderReqBean().setSignRule(rule.getKey());
+                getDE().getNewsOrderReqBean().setSignRuleValue(rule.getValue());
                 break;
             case NewOrderValue.送货地址:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }
                 UnitInfo unitInfo1 = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA);
-                getP().getD().getNewsOrderReqBean().setAddress(unitInfo1.getCompanyAddress());
+                getDE().getNewsOrderReqBean().setAddress(unitInfo1.getCompanyAddress());
                 break;
         }
-        getP().getU().init(getP().getD().getNewsOrderReqBean());
+        getUI().init(getDE().getNewsOrderReqBean());
     }
 
 
     public void setUnit(int id){
-        getP().getD().getInfo(id, new UINetAdapter<UnitInfo>(getActivity()) {
+        getDE().getInfo(id, new UINetAdapter<UnitInfo>(getActivity()) {
             @Override
             public void onResult(boolean success, String msg, UnitInfo unitInfo) {
                 super.onResult(success, msg, unitInfo);

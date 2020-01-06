@@ -31,8 +31,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().setWeightMsgs(Paper.book().read("weights"+ LocalValue.get登录返回信息().getUserId(),new ArrayList<WeightMsg.MessageBean>()));
-        getP().getU().LoadListData(getP().getD().getWeightMsgs());
+        getDE().setWeightMsgs(Paper.book().read("weights"+ LocalValue.get登录返回信息().getUserId(),new ArrayList<WeightMsg.MessageBean>()));
+        getUI().LoadListData(getDE().getWeightMsgs());
     }
 
 
@@ -40,7 +40,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -56,15 +56,15 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         if(m==null){
             return ;
         }
-        getP().getU().initTopUI(m);
+        getUI().initTopUI(m);
         if(NullUtil.isStrEmpty(m.getMessageType())||NullUtil.isStrEmpty(m.getState())){
             return;
         }
         ArrayList<WeightMsg.MessageBean> list = new ArrayList<>();
         list.add(m);
-        getP().getD().getWeightMsgs().add(m);
-        Paper.book().write("weights"+ LocalValue.get登录返回信息().getUserId(),getP().getD().getWeightMsgs());
-        getP().getU().notifyDataSetChanged();
+        getDE().getWeightMsgs().add(m);
+        Paper.book().write("weights"+ LocalValue.get登录返回信息().getUserId(),getDE().getWeightMsgs());
+        getUI().notifyDataSetChanged();
 
     }
 

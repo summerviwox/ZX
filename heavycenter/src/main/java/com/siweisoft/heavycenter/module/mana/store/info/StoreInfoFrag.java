@@ -23,8 +23,8 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
         super.initNow();
         switch (getArguments().getString(StoreInfoValue.仓库类型)){
             case StoreInfoValue.修改仓库:
-                getP().getD().setStoreDetail((StoreDetail) getArguments().getSerializable(ValueConstant.DATA_DATA));
-                getP().getU().initUI(getP().getD().getStoreDetail());
+                getDE().setStoreDetail((StoreDetail) getArguments().getSerializable(ValueConstant.DATA_DATA));
+                getUI().initUI(getDE().getStoreDetail());
                 break;
             case StoreInfoValue.新建仓库:
 
@@ -40,8 +40,8 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
             case R.id.ftv_right2:
                 switch (getArguments().getString(StoreInfoValue.仓库类型)){
                     case StoreInfoValue.修改仓库:
-                        if(getP().getU().canGo()){
-                            getP().getD().update(getP().getU().getUpdateStoreReq(getP().getD().getUpdateStoreReq(getP().getD().getStoreDetail())), new UINetAdapter<UpdateStoreRes>(this) {
+                        if(getUI().canGo()){
+                            getDE().update(getUI().getUpdateStoreReq(getDE().getUpdateStoreReq(getDE().getStoreDetail())), new UINetAdapter<UpdateStoreRes>(this) {
                                 @Override
                                 public void onSuccess(UpdateStoreRes o) {
                                     getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
@@ -51,8 +51,8 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
                         }
                         break;
                     case StoreInfoValue.新建仓库:
-                        if(getP().getU().canGo()){
-                            getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
+                        if(getUI().canGo()){
+                            getDE().newStore(getUI().getNewStoreReqBean(getDE().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
                                 @Override
                                 public void onSuccess(NewStoreResBean o) {
                                     getArguments().putBoolean(ValueConstant.FARG_TYPE,true);

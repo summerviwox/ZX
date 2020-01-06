@@ -32,12 +32,12 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.regist:
-                if(getP().getU().is都输入好了()){
-                    getP().getD().regist(getP().getU().getRegistReqBean(), new UINetAdapter<RegistResBean>(this,true) {
+                if(getUI().is都输入好了()){
+                    getDE().regist(getUI().getRegistReqBean(), new UINetAdapter<RegistResBean>(this,true) {
 
                         @Override
                         public void onSuccess(RegistResBean o) {
-                            LocalValue.save登录参数(getP().getU().getLoginReqBean());
+                            LocalValue.save登录参数(getUI().getLoginReqBean());
                             getBaseUIAct().onBackPressed();
                             FragManager2.getInstance().setAnim(true).setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,RoleFrag.getInstance(true));
                         }
@@ -45,16 +45,16 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                 }
                 break;
             case R.id.tv_code:
-                if(getP().getU().is可以点击验证码()){
-                    getP().getD().getCode(getP().getU().getCodeReqBean());
-                    getP().getD().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
+                if(getUI().is可以点击验证码()){
+                    getDE().getCode(getUI().getCodeReqBean());
+                    getDE().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
                         @Override
                         public Void onStarLoading(Object o) {
-                            getP().getU().bind.code.getCodeText().setText((60 - (int) o) + "s");
+                            getUI().bind.code.getCodeText().setText((60 - (int) o) + "s");
                             if ((60 - (int) o) <= 0) {
-                                getP().getU().bind.code.setEnabled(true);
-                                getP().getD().getThreadUtil().stop();
-                                getP().getU().bind.code.getCodeText().setText("重新获取验证码");
+                                getUI().bind.code.setEnabled(true);
+                                getDE().getThreadUtil().stop();
+                                getUI().bind.code.getCodeText().setText("重新获取验证码");
                             }
                             return null;
                         }
@@ -75,6 +75,6 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getP().getD().getThreadUtil().stop();
+        getDE().getThreadUtil().stop();
     }
 }

@@ -27,7 +27,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
     @Override
     public void onFristVisibleDelayInit() {
-        getP().getU().initPages(getFrag(),getP().getD().getPages());
+        getUI().initPages(getFrag(),getDE().getPages());
     }
 
 
@@ -36,7 +36,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)getActivity()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -50,8 +50,8 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
-                        getP().getD().setComid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getDE().setComid(data.getBranchId());
+                        getUI().bind.title.getMidTV().setText(data.getAbbreviationName());
                         refreshMsg();
                     }
                 });
@@ -61,9 +61,9 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
     }
 
     private void refreshMsg(){
-        for(int i=0;i<getP().getD().getPages().size();i++){
-            MsgFrag msgFrag = (MsgFrag) getP().getD().getPages().get(i);
-            msgFrag.getP().getU().autoRefresh();
+        for(int i=0;i<getDE().getPages().size();i++){
+            MsgFrag msgFrag = (MsgFrag) getDE().getPages().get(i);
+            msgFrag.getUI().autoRefresh();
 
         }
     }

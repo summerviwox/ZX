@@ -22,7 +22,7 @@ public class NoBindFrag extends AppFrag<NoBindUIOpe,NoBindDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){

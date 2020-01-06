@@ -48,47 +48,47 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().setType(getArguments().getString(CarDetailValue.类型));
-        getP().getU().init(getP().getD().getType());
+        getDE().setType(getArguments().getString(CarDetailValue.类型));
+        getUI().init(getDE().getType());
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
-        switch (getP().getD().getType()){
+        switch (getDE().getType()){
             case CarDetailValue.新建车辆:
 
                 break;
             case CarDetailValue.新建车辆并绑定:
-                getP().getU().bind.title.getMidTV().setText("绑定车辆");
-                getP().getU().bind.etName.setText(getArguments().getString(CarDetailValue.标题,""));
-                //getP().getU().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
+                getUI().bind.title.getMidTV().setText("绑定车辆");
+                getUI().bind.etName.setText(getArguments().getString(CarDetailValue.标题,""));
+                //getUI().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
                 break;
             case CarDetailValue.查看车辆:
-                getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));
-                getP().getD().infoCar(getP().getD().getCarInfoReq(getP().getD().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
+                getDE().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));
+                getDE().infoCar(getDE().getCarInfoReq(getDE().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
                     @Override
                     public void onSuccess(CarsResBean.CarInfoRes o) {
-                        getP().getD().setCarinfo(o);
-                        getP().getU().initData(getP().getD().getType(),getP().getD().getCarinfo());
-                        getP().getD().drvers(getP().getD().getType(), getP().getD().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
+                        getDE().setCarinfo(o);
+                        getUI().initData(getDE().getType(),getDE().getCarinfo());
+                        getDE().drvers(getDE().getType(), getDE().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
                             @Override
                             public void onSuccess(ArrayList<DriverRes> o) {
                                 super.onSuccess(o);
-                                getP().getD().ReaddDriverData(o);
-                                getP().getU().LoadListData(getP().getD().getDriverRes(),DetailFrag.this);
+                                getDE().ReaddDriverData(o);
+                                getUI().LoadListData(getDE().getDriverRes(),DetailFrag.this);
                             }
                         });
                     }
                 });
                 break;
             case CarDetailValue.绑定车辆:
-                getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));
-                getP().getD().infoCar(getP().getD().getCarInfoReq(getP().getD().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
+                getDE().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));
+                getDE().infoCar(getDE().getCarInfoReq(getDE().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
                     @Override
                     public void onSuccess(CarsResBean.CarInfoRes o) {
-                        getP().getD().setCarinfo(o);
-                        getP().getU().initData(getP().getD().getType(),getP().getD().getCarinfo());
+                        getDE().setCarinfo(o);
+                        getUI().initData(getDE().getType(),getDE().getCarinfo());
                     }
                 });
                 break;
@@ -111,20 +111,20 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 //IntentUtil.getInstance().photoShowFromphone(this,02);
                 break;
             case R.id.ftv_right2:
-                switch (getP().getD().getType()){
+                switch (getDE().getType()){
                     case CarDetailValue.新建车辆:
-                        if(getP().getD().IsNewCar(getP().getD().getCarinfo())){
-                            if(getP().getU().canNewGo()){
-                                getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean(getP().getD().getCarinfo())), new UINetAdapter<CarsResBean.CarInfoRes>(this,UINetAdapter.Loading,true) {
+                        if(getDE().IsNewCar(getDE().getCarinfo())){
+                            if(getUI().canNewGo()){
+                                getDE().newCar(getUI().getCarNewReqBean(getDE().getCarNewReqBean(getDE().getCarinfo())), new UINetAdapter<CarsResBean.CarInfoRes>(this,UINetAdapter.Loading,true) {
                                     @Override
                                     public void onSuccess(CarsResBean.CarInfoRes o) {
-                                        if(getP().getD().getBindCarReq().isEnable()){
+                                        if(getDE().getBindCarReq().isEnable()){
                                             NewCarDAOpe.infoCar(getContext(), o.getCarLicenseNo(), new UINetAdapter<CarsResBean.CarInfoRes>(DetailFrag.this,UINetAdapter.Loading) {
                                                 @Override
                                                 public void onSuccess(CarsResBean.CarInfoRes o) {
                                                     super.onSuccess(o);
-                                                    getP().getD().getBindCarReq().setId(o.getVehicleId());
-                                                    getP().getD().bindCar(getP().getD().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
+                                                    getDE().getBindCarReq().setId(o.getVehicleId());
+                                                    getDE().bindCar(getDE().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
                                                         @Override
                                                         public void onSuccess(BindCarRes o) {
                                                             super.onSuccess(o);
@@ -142,13 +142,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                 });
                             }
                         }else{
-                            if(getP().getU().canNewGo()){
-                                getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(this,UINetAdapter.Loading,true) {
+                            if(getUI().canNewGo()){
+                                getDE().updateCar(getUI().getUpdateCarReq(getDE().getUpdateCarReq(getDE().getCarinfo())), new UINetAdapter<UpdateCarRes>(this,UINetAdapter.Loading,true) {
                                     @Override
                                     public void onSuccess(UpdateCarRes o) {
                                         super.onSuccess(o);
-                                        if(getP().getD().getBindCarReq().isEnable()){
-                                            getP().getD().bindCar(getP().getD().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
+                                        if(getDE().getBindCarReq().isEnable()){
+                                            getDE().bindCar(getDE().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
                                                 @Override
                                                 public void onSuccess(BindCarRes o) {
                                                     super.onSuccess(o);
@@ -166,13 +166,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                         }
                         break;
                     case CarDetailValue.查看车辆:
-                        if(getP().getU().canGo()){
-                            getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(this,UINetAdapter.Loading,true) {
+                        if(getUI().canGo()){
+                            getDE().updateCar(getUI().getUpdateCarReq(getDE().getUpdateCarReq(getDE().getCarinfo())), new UINetAdapter<UpdateCarRes>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(UpdateCarRes o) {
                                     super.onSuccess(o);
-                                    if(getP().getD().getBindCarReq().isEnable()){
-                                        getP().getD().bindCar(getP().getD().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
+                                    if(getDE().getBindCarReq().isEnable()){
+                                        getDE().bindCar(getDE().getBindCarReq(),new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
                                             @Override
                                             public void onSuccess(BindCarRes o) {
                                                 super.onSuccess(o);
@@ -189,16 +189,16 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                         }
                         break;
                     case CarDetailValue.绑定车辆:
-                        if(getP().getU().canGo()){
-                            getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(this) {
+                        if(getUI().canGo()){
+                            getDE().updateCar(getUI().getUpdateCarReq(getDE().getUpdateCarReq(getDE().getCarinfo())), new UINetAdapter<UpdateCarRes>(this) {
                                 @Override
                                 public void onResult(boolean success, String msg, UpdateCarRes o) {
                                     super.onResult(success, msg, o);
                                     if(success){
-                                        getP().getD().bindCar(getP().getD().getDriverBindCarReq(getP().getD().getCarinfo()), new UINetAdapter<BindCarRes>(DetailFrag.this,true) {
+                                        getDE().bindCar(getDE().getDriverBindCarReq(getDE().getCarinfo()), new UINetAdapter<BindCarRes>(DetailFrag.this,true) {
                                             @Override
                                             public void onSuccess(BindCarRes o) {
-                                                ((MainAct) getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                                ((MainAct) getBaseUIAct()).getDE().getMyceFrag().initUINET();
                                                 getBaseUIAct().onBackPressed();
                                             }
                                         });
@@ -208,22 +208,22 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                         }
                         break;
                     case CarDetailValue.新建车辆并绑定:
-                        if(getP().getU().canNewGo()){
-                            getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean(getP().getD().getCarinfo())), new UINetAdapter<CarsResBean.CarInfoRes>(this,UINetAdapter.Loading) {
+                        if(getUI().canNewGo()){
+                            getDE().newCar(getUI().getCarNewReqBean(getDE().getCarNewReqBean(getDE().getCarinfo())), new UINetAdapter<CarsResBean.CarInfoRes>(this,UINetAdapter.Loading) {
                                 @Override
                                 public void onSuccess(CarsResBean.CarInfoRes o) {
-                                    getP().getD().setCarinfo(o);
+                                    getDE().setCarinfo(o);
                                     CarInfoReq req = new CarInfoReq();
                                     req.setIsApp(1);
                                     req.setCarLicenseNo(StringUtil.getStr(getArguments().getString(CarDetailValue.标题)));
-                                    getP().getD().infoCar(req, new UINetAdapter<CarsResBean.CarInfoRes>(DetailFrag.this,UINetAdapter.Loading) {
+                                    getDE().infoCar(req, new UINetAdapter<CarsResBean.CarInfoRes>(DetailFrag.this,UINetAdapter.Loading) {
                                         @Override
                                         public void onSuccess(CarsResBean.CarInfoRes o) {
-                                            getP().getD().setCarinfo(o);
-                                            getP().getD().bindCar(getP().getD().getDriverBindCarReq(getP().getD().getCarinfo()), new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
+                                            getDE().setCarinfo(o);
+                                            getDE().bindCar(getDE().getDriverBindCarReq(getDE().getCarinfo()), new UINetAdapter<BindCarRes>(DetailFrag.this,UINetAdapter.Loading,true) {
                                                 @Override
                                                 public void onSuccess(BindCarRes o) {
-                                                    ((MainAct) getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                                    ((MainAct) getBaseUIAct()).getDE().getMyceFrag().initUINET();
                                                     getBaseUIAct().onBackPressed();
                                                 }
                                             });
@@ -236,27 +236,27 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 }
                 break;
             case R.id.tv_y:
-                switch (getP().getD().getType()){
+                switch (getDE().getType()){
                     case CarDetailValue.新建车辆:
-                        if(getP().getU().nowReInput()){
-                            getP().getU().whenClickReInput();
-                            getP().getD().getBindCarReq().setEnable(false);
+                        if(getUI().nowReInput()){
+                            getUI().whenClickReInput();
+                            getDE().getBindCarReq().setEnable(false);
                         }else{
-                            if(getP().getU().canSearchCar()){
-                                getP().getU().whenClickMakeSure();
-                                DetailDAOpe.infoCar(getContext(), getP().getU().getCarNO(), new UINetAdapter<CarsResBean.CarInfoRes>(this, UINetAdapter.Loading) {
+                            if(getUI().canSearchCar()){
+                                getUI().whenClickMakeSure();
+                                DetailDAOpe.infoCar(getContext(), getUI().getCarNO(), new UINetAdapter<CarsResBean.CarInfoRes>(this, UINetAdapter.Loading) {
                                     @Override
                                     public void onSuccess(CarsResBean.CarInfoRes o) {
                                         super.onSuccess(o);
-                                        getP().getD().setCarinfo(o);
-                                        getP().getU().initData(getP().getD().getType(),getP().getD().getCarinfo());
+                                        getDE().setCarinfo(o);
+                                        getUI().initData(getDE().getType(),getDE().getCarinfo());
 
-                                        getP().getD().drvers(getP().getD().getType(),getP().getD().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
+                                        getDE().drvers(getDE().getType(),getDE().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
                                             @Override
                                             public void onSuccess(ArrayList<DriverRes> o) {
                                                 super.onSuccess(o);
-                                                getP().getD().ReaddDriverData(o);
-                                                getP().getU().LoadListData(getP().getD().getDriverRes(),DetailFrag.this);
+                                                getDE().ReaddDriverData(o);
+                                                getUI().LoadListData(getDE().getDriverRes(),DetailFrag.this);
                                             }
                                         });
                                     }
@@ -292,7 +292,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             return;
         }
 
-        getP().getD().updateHead(selectList.get(0).getCompressPath(),s, new UINetAdapter<UpdateHeadResBean>(this,true) {
+        getDE().updateHead(selectList.get(0).getCompressPath(),s, new UINetAdapter<UpdateHeadResBean>(this,true) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
@@ -304,13 +304,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                         }
                         switch (requestCode){
                             case 01:
-                                getP().getD().getCarinfo().setVehicleLicensePhoto(s);
+                                getDE().getCarinfo().setVehicleLicensePhoto(s);
                                 break;
                             case 02:
-                                getP().getD().getCarinfo().setVehiclePhoto(s);
+                                getDE().getCarinfo().setVehiclePhoto(s);
                                 break;
                         }
-                        getP().getU().initPhoto(getP().getD().getCarinfo().getVehiclePhoto(),getP().getD().getCarinfo().getVehicleLicensePhoto());
+                        getUI().initPhoto(getDE().getCarinfo().getVehiclePhoto(),getDE().getCarinfo().getVehicleLicensePhoto());
                     }
                 }
             }
@@ -325,17 +325,17 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
                 DriverRes driverRes = (DriverRes) v.getTag(R.id.data);
-                for(int i=0;getP().getD().getDriverRes()!=null&&i<getP().getD().getDriverRes().size();i++){
+                for(int i=0;getDE().getDriverRes()!=null&&i<getDE().getDriverRes().size();i++){
                     if(pos==i){
-                        getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
-                        getP().getD().getBindCarReq().setEnable(true);
-                        getP().getD().getBindCarReq().setCurrentDriver(driverRes.getUserId());
-                        getP().getD().getBindCarReq().setId(getP().getD().getCarinfo().getVehicleId());
+                        getDE().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
+                        getDE().getBindCarReq().setEnable(true);
+                        getDE().getBindCarReq().setCurrentDriver(driverRes.getUserId());
+                        getDE().getBindCarReq().setId(getDE().getCarinfo().getVehicleId());
                     }else{
-                        getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
+                        getDE().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
                     }
                 }
-                getP().getU().notifyDataSetChanged();
+                getUI().notifyDataSetChanged();
                 break;
         }
     }
@@ -343,21 +343,21 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
 
     public void bindCar(int userid){
         DriverRes select = null;
-        for(int i=0;getP().getD().getDriverRes()!=null&&i<getP().getD().getDriverRes().size();i++){
-            if(userid == getP().getD().getDriverRes().get(i).getUserId()){
-                select = getP().getD().getDriverRes().get(i);
-                getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
-                getP().getD().getBindCarReq().setEnable(true);
-                getP().getD().getBindCarReq().setCurrentDriver(userid);
-                getP().getD().getBindCarReq().setId(getP().getD().getCarinfo().getVehicleId());
+        for(int i=0;getDE().getDriverRes()!=null&&i<getDE().getDriverRes().size();i++){
+            if(userid == getDE().getDriverRes().get(i).getUserId()){
+                select = getDE().getDriverRes().get(i);
+                getDE().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
+                getDE().getBindCarReq().setEnable(true);
+                getDE().getBindCarReq().setCurrentDriver(userid);
+                getDE().getBindCarReq().setId(getDE().getCarinfo().getVehicleId());
             }else{
-                getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
+                getDE().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
             }
         }
         if(select!=null){
-            getP().getD().getDriverRes().remove(select);
-            getP().getD().getDriverRes().add(0,select);
+            getDE().getDriverRes().remove(select);
+            getDE().getDriverRes().add(0,select);
         }
-        getP().getU().notifyDataSetChanged();
+        getUI().notifyDataSetChanged();
     }
 }

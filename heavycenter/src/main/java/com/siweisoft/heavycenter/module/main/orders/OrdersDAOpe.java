@@ -34,7 +34,7 @@ public class OrdersDAOpe extends BaseDAOpe {
         pages.clear();
         for(int i=0;i<statuss.length;i++){
             OrderFrag orderFrag = OrderFrag.getInstance(statuss[i],getFrag().get容器());
-            orderFrag.getP().getD().setOrdersFrag((OrdersFrag) getFrag());
+            orderFrag.getDE().setOrdersFrag((OrdersFrag) getFrag());
             pages.add(orderFrag);
         }
         return pages;

@@ -4,13 +4,13 @@ package com.siweisoft.heavycenter.base;
 
 import android.os.Bundle;
 
-import com.android.lib.base.activity.BaseUIActivity;
-import com.android.lib.base.ope.BaseDAOpe;
-import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.util.fragment.FragManager;
-        import com.android.lib.util.fragment.two.FragManager2;
+import com.summer.x.base.ui.DE;
+import com.summer.x.base.ui.UI;
+import com.summer.x.base.ui.VA;
+import com.summer.x.base.ui.XActivity;
 
-public class AppAct<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIActivity<A,B> {
+
+public class AppAct<A extends UI, B extends DE> extends XActivity<A,B,VA> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

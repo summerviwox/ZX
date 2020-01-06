@@ -20,8 +20,8 @@ public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().initPages();
-        getP().getU().initPages(getFrag(),getP().getD().getPages());
+        getDE().initPages();
+        getUI().initPages(getFrag(),getDE().getPages());
 
     }
 
@@ -47,7 +47,7 @@ public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    CarFrag carFrag = (CarFrag) getP().getD().getPages().get(1);
+                    CarFrag carFrag = (CarFrag) getDE().getPages().get(1);
                     carFrag. onRefresh(null);;
                 }
                 break;

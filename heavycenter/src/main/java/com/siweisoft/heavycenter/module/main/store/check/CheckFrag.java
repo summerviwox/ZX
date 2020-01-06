@@ -30,7 +30,7 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRecycle();
+        getUI().initRecycle();
         switch (getArguments().getString(ValueConstant.DATA_TYPE)){
             case CheckValue.盘点一个仓库:
                 CheckDAOpe.storesDetail(getActivity(), getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(getActivity()) {
@@ -40,19 +40,19 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
                         StoresResBean storesResBean = new StoresResBean();
                         storesResBean.getResults().add(o);
 
-                        getP().getD().setStoresResBean(storesResBean);
-                        getP().getU().LoadListData(getP().getD().getStoresResBean());
-                        getP().getD().setInitdata(true);
+                        getDE().setStoresResBean(storesResBean);
+                        getUI().LoadListData(getDE().getStoresResBean());
+                        getDE().setInitdata(true);
                     }
                 });
                 break;
             case CheckValue.盘点所有仓库:
-                getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getBaseUIAct()) {
+                getDE().storesInfo(new UINetAdapter<StoresResBean>(getBaseUIAct()) {
                     @Override
                     public void onSuccess(StoresResBean o) {
-                        getP().getD().setStoresResBean(o);
-                        getP().getU().LoadListData(getP().getD().getStoresResBean());
-                        getP().getD().setInitdata(true);
+                        getDE().setStoresResBean(o);
+                        getUI().LoadListData(getDE().getStoresResBean());
+                        getDE().setInitdata(true);
                     }
                 });
                 break;
@@ -64,13 +64,13 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                if(getP().getD().canGo()){
-                    if(!getP().getD().changedData()){
+                if(getDE().canGo()){
+                    if(!getDE().changedData()){
                         ToastUtil.getInstance().showShort(getActivity(),"库存没有变化，取消盘点");
                         getBaseUIAct().onBackPressed();
                         return;
                     }
-                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
+                    getDE().checkStore(getDE().getCheckStoreReqBean(getDE().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
                         @Override
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {
                             super.onResult(success, msg, o);

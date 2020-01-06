@@ -24,8 +24,8 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRefresh(this);
-        getP().getU().initRecycle();
+        getUI().initRefresh(this);
+        getUI().initRecycle();
         onRefresh(null);
     }
 
@@ -55,7 +55,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                             public void onSuccess(GoodStatusRes o) {
                                 super.onSuccess(o);
                                 data.setStatus(data.getStatus() == GoodListRes.ResultsBean.停用 ? GoodListRes.ResultsBean.启用 :  GoodListRes.ResultsBean.停用);
-                                getP().getU().notifyDataSetChanged();
+                                getUI().notifyDataSetChanged();
                             }
                         });
                         break;
@@ -71,10 +71,10 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().listGood(new UINetAdapter<GoodListRes>(this) {
+        getDE().listGood(new UINetAdapter<GoodListRes>(this) {
             @Override
             public void onSuccess(GoodListRes o) {
-                getP().getU().LoadListData(o,GoodFrag.this);
+                getUI().LoadListData(o,GoodFrag.this);
             }
         });
     }
@@ -88,7 +88,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    getP().getU().autoRefresh(600);
+                    getUI().autoRefresh(600);
                 }
                 break;
         }

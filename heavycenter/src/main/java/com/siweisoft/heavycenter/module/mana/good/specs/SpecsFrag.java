@@ -17,10 +17,10 @@ public class SpecsFrag extends AppFrag<SpecsUIOpe,SpecsDAOpe> implements ViewLis
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().SpecsGood(getArguments().getInt(ValueConstant.DATA_POSITION2), new UINetAdapter<SpecsRes>(this) {
+        getDE().SpecsGood(getArguments().getInt(ValueConstant.DATA_POSITION2), new UINetAdapter<SpecsRes>(this) {
             @Override
             public void onSuccess(SpecsRes o) {
-                getP().getU().LoadListData(o,SpecsFrag.this);
+                getUI().LoadListData(o,SpecsFrag.this);
             }
         });
     }

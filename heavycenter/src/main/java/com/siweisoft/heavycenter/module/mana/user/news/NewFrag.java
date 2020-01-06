@@ -41,8 +41,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                     @Override
                     public void onSuccess(LoginResBean o) {
                         super.onSuccess(o);
-                        getP().getD().setUserInfo(o);
-                        getP().getU().initUserInfo(getP().getD().getUserInfo());
+                        getDE().setUserInfo(o);
+                        getUI().initUserInfo(getDE().getUserInfo());
                     }
                 });
                 break;
@@ -56,8 +56,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.enter:
-                if(getP().getU().canGo()){
-                    getP().getD().addUser(getP().getU().getUser(getP().getD().getReqBean()), new UINetAdapter<AddUserResBean>(this,true) {
+                if(getUI().canGo()){
+                    getDE().addUser(getUI().getUser(getDE().getReqBean()), new UINetAdapter<AddUserResBean>(this,true) {
                         @Override
                         public void onSuccess(AddUserResBean o) {
                             getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
@@ -67,8 +67,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 }
                 break;
             case R.id.ftv_right2:
-                if(v.getVisibility()==View.VISIBLE&&getP().getD().getUserInfo()!=null&&getP().getU().getSelectRole()!=null){
-                    NewDAOpe.setUserRole(getBaseAct(), getP().getD().getUserInfo().getUserId(), getP().getU().getSelectRole(), new UINetAdapter<UserRoleRes>(this,true) {
+                if(v.getVisibility()==View.VISIBLE&&getDE().getUserInfo()!=null&&getUI().getSelectRole()!=null){
+                    NewDAOpe.setUserRole(getBaseAct(), getDE().getUserInfo().getUserId(), getUI().getSelectRole(), new UINetAdapter<UserRoleRes>(this,true) {
                         @Override
                         public void onSuccess(UserRoleRes o) {
                             super.onSuccess(o);

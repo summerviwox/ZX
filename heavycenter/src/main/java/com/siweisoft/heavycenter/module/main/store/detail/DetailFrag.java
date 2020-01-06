@@ -26,13 +26,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     }
 
     private void refresh(boolean showload){
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this,showload?UINetAdapter.Loading:0) {
+        getDE().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this,showload?UINetAdapter.Loading:0) {
             @Override
             public void onSuccess(StoreDetail o) {
                 //o = new Test().getStoreDetail();
-                getP().getU().ready();
-                getP().getD().setStoreDetail(o);
-                getP().getU().initUI(getP().getD().getStoreDetail());
+                getUI().ready();
+                getDE().setStoreDetail(o);
+                getUI().initUI(getDE().getStoreDetail());
             }
         });
     }
@@ -46,7 +46,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),CheckFrag.getInstance(CheckValue.盘点一个仓库,getP().getD().getStoreDetail().getWarehouseId()),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),CheckFrag.getInstance(CheckValue.盘点一个仓库,getDE().getStoreDetail().getWarehouseId()),bundle);
         }
     }
 

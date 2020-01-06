@@ -23,7 +23,7 @@ public class SetFrag extends AppFrag<SetUIOpe,SetDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.item_exit:
-                getP().getD().logOut(new UINetAdapter<LogOutResBean>(this,true) {
+                getDE().logOut(new UINetAdapter<LogOutResBean>(this,true) {
                     @Override
                     public void onResult(boolean success, String msg, LogOutResBean o) {
                         super.onResult(success, msg, o);

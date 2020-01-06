@@ -37,13 +37,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
+        getDE().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(OrdersRes.ResultsBean o) {
                 //o= new Test().getOrdersRes().getResults().get(0);
-                getP().getD().setData(o);
-                getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());
-                getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
+                getDE().setData(o);
+                getUI().initUI(getArguments().getString(ValueConstant.TYPE),getDE().getData());
+                getUI().initdata(getDE().getData().getVehicleList(),DetailFrag.this);
             }
         });
     }
@@ -56,17 +56,17 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),CarFrag.getInstance("指定车辆",CarsReqBean.WHAT_MY, CarValue.选择车辆));
                 break;
             case R.id.tv_totalcarnum://done
-                if(getP().getD().getData()==null){
+                if(getDE().getData()==null){
                     return;
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1,getP().getD().getData().getOrderNo()));
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getDE().getData().getOrderId(),1,getDE().getData().getOrderNo()));
 
                 break;
             case R.id.tv_carno://doing
-                if(getP().getD().getData()==null){
+                if(getDE().getData()==null){
                     return;
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1,getP().getD().getData().getOrderNo()));
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getDE().getData().getOrderId(),1,getDE().getData().getOrderNo()));
                 break;
         }
     }
@@ -80,14 +80,14 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                     return;
                 }
                 final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) bundle.getSerializable(ValueConstant.DATA_DATA);
-                if(!getP().getD().haveAddCar(bean)){
-                    getP().getD().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
+                if(!getDE().haveAddCar(bean)){
+                    getDE().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
                         @Override
                         public void onResult(boolean success, String msg, AddCarRes o) {
                             super.onResult(success, msg, o);
                             if(success){
-                                getP().getD().getData().getVehicleList().add(bean);
-                                getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
+                                getDE().getData().getVehicleList().add(bean);
+                                getUI().initdata(getDE().getData().getVehicleList(),DetailFrag.this);
                             }
                         }
                     });
@@ -103,13 +103,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 switch (v.getId()){
                     case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().addCar(bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
+                        getDE().addCar(bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
                             @Override
                             public void onResult(boolean success, String msg, AddCarRes o) {
                                 super.onResult(success, msg, o);
                                 if(success){
-                                    getP().getD().getData().getVehicleList().remove(bean);
-                                    getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
+                                    getDE().getData().getVehicleList().remove(bean);
+                                    getUI().initdata(getDE().getData().getVehicleList(),DetailFrag.this);
                                 }
                             }
                         });

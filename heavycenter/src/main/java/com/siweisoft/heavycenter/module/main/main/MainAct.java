@@ -10,16 +10,6 @@ import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.lib.base.activity.BaseUIActivity;
-import com.android.lib.base.fragment.BaseUIFrag;
-import com.android.lib.base.interf.view.OnAppItemSelectListener;
-import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.GsonUtil;
-import com.android.lib.util.IntentUtil;
-import com.android.lib.util.ToastUtil;
-import com.android.lib.util.activity.ActivityUtil;
-import com.android.lib.util.fragment.two.FragManager2;
-import com.android.lib.util.system.SystemUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.base.AppAct;
@@ -39,7 +29,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityUtil.被后台清理了就重启(getActivity(),savedInstanceState,WelcAct.class);
-        if(!getP().getD().getPermissionUtil().is所有的权限都允许(getActivity(),getP().getD().getPermissions())){
+        if(!getDE().getPermissionUtil().is所有的权限都允许(getActivity(),getDE().getPermissions())){
             return;
         }
         初始化界面();
@@ -52,23 +42,23 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
     public void 初始化界面(){
-        getP().getU().setBottomMenuViewData(getP().getD().initBottomdata());
-        getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
-        getP().getU().initPages(getP().getD().getBottomdata(),this);
-        if(getP().getD().getMyceFrag().getP().getU()!=null){
-            getP().getD().getMyceFrag().init();
+        getUI().setBottomMenuViewData(getDE().initBottomdata());
+        getUI().initDrawerMenu(getDE().getMyceFrag());
+        getUI().initPages(getDE().getBottomdata(),this);
+        if(getDE().getMyceFrag().getUI()!=null){
+            getDE().getMyceFrag().init();
         }
     }
 
     public void go判断是否绑定单位处理(){
-        getP().getU().initPages(getP().getD().initBottomdata(),this);
-        if(getP().getD().getMyceFrag().getP().getU()!=null){
-            getP().getD().getMyceFrag().init();
+        getUI().initPages(getDE().initBottomdata(),this);
+        if(getDE().getMyceFrag().getUI()!=null){
+            getDE().getMyceFrag().init();
         }
     }
 
     public void go网络获取用户信息重新加载(){
-        getP().getD().get用户信息(new UINetAdapter<LoginResBean>(this) {
+        getDE().get用户信息(new UINetAdapter<LoginResBean>(this) {
             @Override
             public void onSuccess(LoginResBean o) {
                 super.onSuccess(o);
@@ -82,16 +72,16 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         FragManager2.getInstance().clear((BaseUIActivity) getActivity(),MainValue.主界面);
-        getP().getU().setCurrentItem(position);
-        setMoudle(getP().getD().getBottomdata().get(position).getName());
-        getP().getD().getBottomdata().get(position).getFragment().onFristVisible();
-//        if(position==getP().getD().getMenudata().size()-1){
-//            if(!getP().getD().is绑定了单位()){
-//                getP().getU().hideshowunbind(false);
+        getUI().setCurrentItem(position);
+        setMoudle(getDE().getBottomdata().get(position).getName());
+        getDE().getBottomdata().get(position).getFragment().onFristVisible();
+//        if(position==getDE().getMenudata().size()-1){
+//            if(!getDE().is绑定了单位()){
+//                getUI().hideshowunbind(false);
 //            }
 //        }else{
-//            if(!getP().getD().is绑定了单位()){
-//                getP().getU().hideshowunbind(true);
+//            if(!getDE().is绑定了单位()){
+//                getUI().hideshowunbind(true);
 //            }
 //        }
     }
@@ -100,7 +90,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(!getP().getD().getPermissionUtil().onRequestPermissionsResult(getActivity(),requestCode,grantResults)){
+        if(!getDE().getPermissionUtil().onRequestPermissionsResult(getActivity(),requestCode,grantResults)){
             return;
         }
         初始化界面();
@@ -119,7 +109,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             }else{
                 //当前模块有可清除界面
                 if(FragManager2.getInstance().getMoudleFragSize(MainValue.主界面)==0){
-                    onAppItemSelect(null,null,getP().getU().bind.bottommenu.getIndex());
+                    onAppItemSelect(null,null,getUI().bind.bottommenu.getIndex());
                 }
 
             }
@@ -138,7 +128,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if(result != null&&result.getContents() != null) {
                 ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
-                getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),result.getContents());
+                getDE().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),result.getContents());
             } else {
                 ToastUtil.getInstance().showShort(this,"解析二维码失败");
             }
@@ -176,7 +166,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
                 PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "SimpleTimer");
                 mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
                 mWakeLock.release();
-                onAppItemSelect(null,null,getP().getD().getPos(MainValue.消息));
+                onAppItemSelect(null,null,getDE().getPos(MainValue.消息));
                 break;
         }
     }

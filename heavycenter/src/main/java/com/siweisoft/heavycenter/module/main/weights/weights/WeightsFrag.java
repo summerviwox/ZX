@@ -29,11 +29,11 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
 
     @Override
     protected void onFristVisibleDelayInit() {
-        getP().getD().listWeight(new UINetAdapter<WeightListRes>(this) {
+        getDE().listWeight(new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
                 super.onSuccess(o);
-                getP().getU().initPages(getFrag(),getP().getD().initPages());
+                getUI().initPages(getFrag(),getDE().initPages());
             }
         });
     }
@@ -44,7 +44,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -52,29 +52,29 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
                 }
                 break;
             case R.id.tv_save:
-                WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(0);
-                if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0&&getP().getD().getWeightMsg()!=null&&getP().getD().getWeightMsg().getMessage()!=null){
-                    getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
+                WeigtFrag weigtFrag = (WeigtFrag) getDE().getPages().get(0);
+                if(weigtFrag.getDE().getWeightMsg().getMessage().getWeigh()!=0&&getDE().getWeightMsg()!=null&&getDE().getWeightMsg().getMessage()!=null){
+                    getDE().getWeightMsg().getMessage().setWeigh(weigtFrag.getDE().getWeightMsg().getMessage().getWeigh());
                 }
-                getP().getU().showBottomView(true);
-                if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
-                    getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
+                getUI().showBottomView(true);
+                if(weigtFrag.getDE().getWeightMsg()!=null&&weigtFrag.getDE().getWeightMsg().getMessage()!=null){
+                    getDE().saveWeight(getDE().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
                         @Override
                         public void onSuccess(SaveWeightRes o) {
                             super.onSuccess(o);
-                            getP().getU().bind.bottom.tvSave.setVisibility(View.INVISIBLE);
+                            getUI().bind.bottom.tvSave.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
                 break;
             case R.id.tv_select:
-                getP().getU().showBottomView(true);
+                getUI().showBottomView(true);
                 break;
             case R.id.tv_select_sel:
-                getP().getU().showBottomView(false);
+                getUI().showBottomView(false);
                 break;
             case R.id.tv_save_sel:
-                getP().getU().showBottomView(false);
+                getUI().showBottomView(false);
                 break;
 
         }
@@ -96,17 +96,17 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
         if(weightMsg==null|| weightMsg.getMessage()==null || weightMsg.getMessage().getOrder()==null){
             return;
         }
-        getP().getU().showBottomView(false);
-        getP().getD().setWeightMsg(weightMsg);
-        getP().getU().initUI(getP().getD().getWeightMsg());
-        getP().getU().bind.bottom.tvSave.setVisibility(View.VISIBLE);
+        getUI().showBottomView(false);
+        getDE().setWeightMsg(weightMsg);
+        getUI().initUI(getDE().getWeightMsg());
+        getUI().bind.bottom.tvSave.setVisibility(View.VISIBLE);
         initPage(weightMsg);
     }
 
     public void initPage(WeightMsg weightMsg){
-           for(int i=0;i<getP().getD().getPages().size();i++){
-               WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(i);
-               weigtFrag.getP().getD().setWeightMsg(weightMsg);
+           for(int i=0;i<getDE().getPages().size();i++){
+               WeigtFrag weigtFrag = (WeigtFrag) getDE().getPages().get(i);
+               weigtFrag.getDE().setWeightMsg(weightMsg);
                 weigtFrag.refresh();
            }
     }

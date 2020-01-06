@@ -17,16 +17,16 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initRefresh();
-        getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData());
+        getUI().initRefresh();
+        getUI().initRecycle();
+        getUI().LoadListData(getDE().getData());
     }
 
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)getActivity()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right2:
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag());

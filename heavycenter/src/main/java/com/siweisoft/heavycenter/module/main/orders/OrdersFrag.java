@@ -34,7 +34,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
 
     @Override
     public void onFristVisibleDelayInit() {
-        getP().getU().initPages(getFrag(),getP().getD().initPages());
+        getUI().initPages(getFrag(),getDE().initPages());
 
     }
 
@@ -43,7 +43,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getBaseAct()).getP().getU().switchDrawer();
+                ((MainAct)getBaseAct()).getUI().switchDrawer();
                 break;
             case R.id.ftv_midicon:
             case R.id.ftv_title:
@@ -52,8 +52,8 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
-                        getP().getD().setCompanyid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getDE().setCompanyid(data.getBranchId());
+                        getUI().bind.title.getMidTV().setText(data.getAbbreviationName());
                         refreshOrders();
                     }
                 });
@@ -75,7 +75,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                bundle.putString(ValueConstant.DATA_TYPE,getP().getD().get较多的订单类型());
+                bundle.putString(ValueConstant.DATA_TYPE,getDE().get较多的订单类型());
                 FragManager2.getInstance().start(getBaseUIAct(),get容器(),new NewOrderFrag(),bundle);
                 break;
             case R.id.ftv_right:
@@ -94,17 +94,17 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_DATA,false)){
                     return;
                 }
-                getP().getU().setCurrent(0);
-                OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(0);
-                orderFrag.getP().getU().autoRefresh();
+                getUI().setCurrent(0);
+                OrderFrag orderFrag = (OrderFrag) getDE().getPages().get(0);
+                orderFrag.getUI().autoRefresh();
                 break;
         }
     }
 
     public void refreshOrders(){
-        for(int i=0;i<getP().getD().getPages().size();i++){
-            OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(i);
-            orderFrag.getP().getU().autoRefresh();
+        for(int i=0;i<getDE().getPages().size();i++){
+            OrderFrag orderFrag = (OrderFrag) getDE().getPages().get(i);
+            orderFrag.getUI().autoRefresh();
         }
     }
 }

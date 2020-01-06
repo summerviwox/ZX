@@ -38,8 +38,8 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onFristVisibleDelayInit() {
-        getP().getU().initRefresh(this,this);
-        getP().getU().initRecycle();
+        getUI().initRefresh(this,this);
+        getUI().initRecycle();
         onRefresh(null);
     }
 
@@ -47,7 +47,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)getActivity()).getUI().switchDrawer();
                 break;
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
@@ -66,9 +66,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                     @Override
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
-                        getP().getD().setComid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
-                        getP().getU().autoRefresh();
+                        getDE().setComid(data.getBranchId());
+                        getUI().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getUI().autoRefresh();
                     }
                 });
                 FragManager2.getInstance().setAnim(false).setHideLast(false).start(getBaseUIAct(),get容器(),tipFrag);
@@ -91,29 +91,29 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
+        getDE().setPageIndex(getDE().getPageIndex()+1);
+        getDE().storesInfo(new NetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
-                getP().getD().addData(o);
-                getP().getU().notifyDataSetChanged(getP().getD().getStoresResBean(),StoreFrag.this);
-                getP().getU().finishLoadmore();
+                getDE().addData(o);
+                getUI().notifyDataSetChanged(getDE().getStoresResBean(),StoreFrag.this);
+                getUI().finishLoadmore();
             }
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        getP().getD().getStoresResBean().getResults().clear();
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
+        getDE().setPageIndex(NetValue.PAGE_INDEX_START);
+        getDE().getStoresResBean().getResults().clear();
+        getDE().storesInfo(new NetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
-                getP().getD().addData(o);
-                getP().getU().notifyDataSetChanged(getP().getD().getStoresResBean(),StoreFrag.this);
-                getP().getU().finishRefresh();
+                getDE().addData(o);
+                getUI().notifyDataSetChanged(getDE().getStoresResBean(),StoreFrag.this);
+                getUI().finishRefresh();
             }
         });
     }
@@ -124,12 +124,12 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         switch (res){
             case 1:
                 if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){
-                    getP().getU().autoRefresh(600);
+                    getUI().autoRefresh(600);
                 }
                 break;
             case 2:
                 if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){
-                    getP().getU().autoRefresh(600);
+                    getUI().autoRefresh(600);
                 }
                 break;
         }

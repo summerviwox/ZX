@@ -35,36 +35,36 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
 
     @Override
     protected void onFristVisibleDelayInit() {
-        getP().getU().initRefresh(this,this);
+        getUI().initRefresh(this,this);
         if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_TYPE))){
-            getP().getU().autoRefresh();
+            getUI().autoRefresh();
         }else{
-            onRefresh(getP().getU().bind.refresh);
+            onRefresh(getUI().bind.refresh);
         }
     }
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getD().setPageindex(getP().getD().getPageindex()+1);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
+        getDE().setPageindex(getDE().getPageindex()+1);
+        getDE().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
-                getP().getD().addData(o);
-                getP().getU().notifyDataSetChanged(getP().getD().getMsgsResBean(),MsgFrag.this);
+                getDE().addData(o);
+                getUI().notifyDataSetChanged(getDE().getMsgsResBean(),MsgFrag.this);
             }
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
+        getDE().setPageindex(NetValue.PAGE_INDEX_START);
+        getDE().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
-                getP().getD().setMsgsResBean(o);
-                getP().getU().notifyDataSetChanged(getP().getD().getMsgsResBean(),MsgFrag.this);
+                getDE().setMsgsResBean(o);
+                getUI().notifyDataSetChanged(getDE().getMsgsResBean(),MsgFrag.this);
             }
         });
     }
@@ -97,11 +97,11 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     return;
                 }
                 final int finalAuditstate = auditstate;
-                getP().getD().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
+                getDE().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
                     @Override
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
-                        getP().getU().setBtnGone((View) v.getTag(R.id.data1),pos);
+                        getUI().setBtnGone((View) v.getTag(R.id.data1),pos);
                         if((StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为用户)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为管理员)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为驾驶员))){

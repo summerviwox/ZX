@@ -41,8 +41,8 @@ public class UnitScanDAOpe extends BaseDAOpe {
         if(appFrag.getClass().getName().equals(TransFrag.class.getName())){
             ToastUtil.getInstance().showShort(getActivity(),"按单位搜索运输单");
             TransFrag transFrag = (TransFrag) appFrag;
-            transFrag.getP().getU().setUnit(StringUtil.getStr(unit.getCompanyName()));
-            transFrag.getP().getU().autoRefresh();
+            transFrag.getUI().setUnit(StringUtil.getStr(unit.getCompanyName()));
+            transFrag.getUI().autoRefresh();
             return;
         }
 

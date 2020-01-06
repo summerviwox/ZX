@@ -31,15 +31,15 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
         provFrag.setArguments(new Bundle());
         provFrag.getArguments().putString(ValueConstant.DATA_DATA,state);
         provFrag.getArguments().putString(ValueConstant.DATA_TYPE,title);
-        provFrag.getP().getD().setState(state);
+        provFrag.getDE().setState(state);
         return provFrag;
     }
 
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getPro(),this);
+        getUI().initRecycle();
+        getUI().LoadListData(getDE().getPro(),this);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
                         break;
                     default:
                         FragManager2.getInstance().start(getBaseUIAct(), get容器(),
-                                CityFrag.getInstance("选择城市",getP().getD().getState(), (CityResBean.ProvinceListBean) v.getTag(R.id.data),(int) v.getTag(R.id.position)));
+                                CityFrag.getInstance("选择城市",getDE().getState(), (CityResBean.ProvinceListBean) v.getTag(R.id.data),(int) v.getTag(R.id.position)));
                         break;
                 }
                 break;
@@ -85,39 +85,39 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
             }
         }
         if(num==citys.getCityList().size()){
-            getP().getD().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_FULL);
+            getDE().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_FULL);
         }else if(num==0){
-            getP().getD().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_NULL);
+            getDE().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_NULL);
         }else{
-            getP().getD().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_HALF);
+            getDE().getPro().get(proindex).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_HALF);
         }
-        getP().getU().notifyDataSetChanged();
+        getUI().notifyDataSetChanged();
 
-        getP().getD().setS("");
-        getP().getD().setS2("");
+        getDE().setS("");
+        getDE().setS2("");
 
-        for(int i=0;i<getP().getD().getPro().size();i++){
-            if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_NULL){
+        for(int i=0;i<getDE().getPro().size();i++){
+            if(getDE().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_NULL){
                 continue;
             }
-            if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_FULL){
-                getP().getD().setS(getP().getD().getS()+getP().getD().getPro().get(i).getValue()+",");
-                getP().getD().setS2(getP().getD().getS2()+getP().getD().getPro().get(i).getName()+",");
+            if(getDE().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_FULL){
+                getDE().setS(getDE().getS()+getDE().getPro().get(i).getValue()+",");
+                getDE().setS2(getDE().getS2()+getDE().getPro().get(i).getName()+",");
                 continue;
             }
-            if(getP().getD().getPro().get(i).getCityList()==null){
+            if(getDE().getPro().get(i).getCityList()==null){
                 continue;
             }
-            for(int j=0;j<getP().getD().getPro().get(i).getCityList().size();j++){
-                if(getP().getD().getPro().get(i).getCityList().get(j).getCheckStatus()== CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
-                    getP().getD().setS(getP().getD().getS()+getP().getD().getPro().get(i).getCityList().get(j).getValue()+",");
-                    getP().getD().setS2(getP().getD().getS2()+getP().getD().getPro().get(i).getCityList().get(j).getName()+",");
+            for(int j=0;j<getDE().getPro().get(i).getCityList().size();j++){
+                if(getDE().getPro().get(i).getCityList().get(j).getCheckStatus()== CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
+                    getDE().setS(getDE().getS()+getDE().getPro().get(i).getCityList().get(j).getValue()+",");
+                    getDE().setS2(getDE().getS2()+getDE().getPro().get(i).getCityList().get(j).getName()+",");
                 }
             }
         }
-        if(getP().getD().getS().endsWith(",")){
-            getP().getD().setS(getP().getD().getS().substring(0,getP().getD().getS().length()-1));
-            getP().getD().setS2(getP().getD().getS2().substring(0,getP().getD().getS2().length()-1));
+        if(getDE().getS().endsWith(",")){
+            getDE().setS(getDE().getS().substring(0,getDE().getS().length()-1));
+            getDE().setS2(getDE().getS2().substring(0,getDE().getS2().length()-1));
         }
     }
 
@@ -128,8 +128,8 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
         switch (v.getId()) {
             case R.id.ftv_right2:
                 getArguments().putBoolean(ValueConstant.DATA_INTENT2,true);
-                getArguments().putString(ValueConstant.DATA_RES, getP().getD().getS());
-                getArguments().putString(ValueConstant.DATA_RES2, getP().getD().getS2());
+                getArguments().putString(ValueConstant.DATA_RES, getDE().getS());
+                getArguments().putString(ValueConstant.DATA_RES2, getDE().getS2());
                 getBaseUIAct().onBackPressed();
                 break;
         }

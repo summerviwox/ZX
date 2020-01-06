@@ -27,7 +27,7 @@ public class CarsDAOpe extends AppDAOpe {
         for(int i=0;i<str.length;i++){
             CarFrag sendFrag = CarFrag.getInstance("车辆列表",str[i],CarValue.管理车辆);
             sendFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
-            sendFrag.getP().getD().setCarsFrag((CarsFrag) getFrag());
+            sendFrag.getDE().setCarsFrag((CarsFrag) getFrag());
             pages.add(sendFrag);
         }
     }

@@ -31,22 +31,22 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
         carFrag.getArguments().putString(ValueConstant.DATA_TYPE,title);
         carFrag.getArguments().putString(ValueConstant.DATA_POSITION,what);
         carFrag.getArguments().putInt(ValueConstant.FARG_REQ,status);
-        carFrag.getP().getD().initCarReq(what,carFrag.getP().getD().getReqStatus(status));
+        carFrag.getDE().initCarReq(what,carFrag.getDE().getReqStatus(status));
         return carFrag;
     }
 
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initUI(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆));
-        getP().getU().initRefresh(this,this);
+        getUI().initUI(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆));
+        getUI().initRefresh(this,this);
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
         onRefresh(null);
-        getP().getU().initSearch(this);
+        getUI().initSearch(this);
     }
 
 
@@ -58,11 +58,11 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
                 switch (v.getId()){
                     case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this,true) {
+                        getDE().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this,true) {
                             @Override
                             public void onSuccess(StopCarResBean o) {
                                 bean.setStatus(bean.getStatus()== CarsResBean.CarInfoRes.STATUS_ON? CarsResBean.CarInfoRes.STATUS_OFF: CarsResBean.CarInfoRes.STATUS_ON);
-                                getP().getU().notifyDataSetChanged();
+                                getUI().notifyDataSetChanged();
                             }
                         });
                         break;
@@ -85,20 +85,20 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().finishLoadmore();
+        getUI().finishLoadmore();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
+        getDE().Cars(getDE().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
                // o = new Test().getCarsResBean();
-                getP().getD().setNetcarsRes(o);
-                getP().getU().LoadListData( getP().getD().searchCar(""),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
-                getP().getU().finishRefresh();
-                if(getP().getD().getCarsFrag()!=null){
-                    getP().getD().getCarsFrag().getP().getU().refreshTopMenu(getP().getD().getNetcarsRes());
+                getDE().setNetcarsRes(o);
+                getUI().LoadListData( getDE().searchCar(""),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
+                getUI().finishRefresh();
+                if(getDE().getCarsFrag()!=null){
+                    getDE().getCarsFrag().getUI().refreshTopMenu(getDE().getNetcarsRes());
                 }
             }
         });
@@ -119,6 +119,6 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
 
     @Override
     public void onFinish(Object o) {
-        getP().getU().LoadListData( getP().getD().searchCar(o.toString()),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
+        getUI().LoadListData( getDE().searchCar(o.toString()),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
     }
 }

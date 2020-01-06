@@ -38,7 +38,7 @@ public class CarsUIOpe extends AppUIOpe<FragManaCarsBinding> {
                 super.onPageSelected(position);
                 if(position==1){
                     CarFrag carFrag = (CarFrag) pages.get(1);
-                    if(carFrag.getP().getU().bind.recycle.getAdapter()==null||carFrag.getP().getU().bind.recycle.getAdapter().getItemCount()==0){
+                    if(carFrag.getUI().bind.recycle.getAdapter()==null||carFrag.getUI().bind.recycle.getAdapter().getItemCount()==0){
                         bind.llCntent.setGapw((int) ScreenUtil.w);
                     }else{
                         bind.llCntent.setGapw(gap);

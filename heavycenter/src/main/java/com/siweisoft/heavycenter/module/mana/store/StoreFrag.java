@@ -30,9 +30,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().setSwipe(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库?false:true);
-        getP().getU().initRefresh(this,this);
-        getP().getU().initRecycle();
+        getUI().setSwipe(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库?false:true);
+        getUI().initRefresh(this,this);
+        getUI().initRecycle();
         onRefresh(null);
 
     }
@@ -59,11 +59,11 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                switch (v.getId()){
                    case R.id.smMenuViewRight:
                        final StoreDetail data  = (StoreDetail) v.getTag(R.id.data);
-                       getP().getD().statusStore(getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(this) {
+                       getDE().statusStore(getUI().getStatusStoresReqBean(getDE().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(this) {
                            @Override
                            public void onSuccess(StatusStoresResBean o) {
                                data.setStatus(1-data.getStatus());
-                               getP().getU().notifyDataSetChanged();
+                               getUI().notifyDataSetChanged();
                            }
                        });
                        break;
@@ -88,17 +88,17 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().finishLoadmore();
+        getUI().finishLoadmore();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
+        getDE().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
-                getP().getU().finishRefresh();
-                getP().getU().LoadListData(o,StoreFrag.this);
+                getUI().finishRefresh();
+                getUI().LoadListData(o,StoreFrag.this);
             }
         });
     }
@@ -112,14 +112,14 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    getP().getU().autoRefresh(600);
+                    getUI().autoRefresh(600);
                 }
                 break;
             case 2:
                 if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     return;
                 }
-                getP().getU().autoRefresh(600);
+                getUI().autoRefresh(600);
                 break;
         }
     }

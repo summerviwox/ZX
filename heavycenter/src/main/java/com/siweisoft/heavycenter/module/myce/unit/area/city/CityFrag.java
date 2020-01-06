@@ -30,9 +30,9 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
         cityFrag.getArguments().putString(ValueConstant.DATA_DATA2,state);
         cityFrag.getArguments().putSerializable(ValueConstant.DATA_DATA,provinceListBean);
         cityFrag.getArguments().putInt(ValueConstant.DATA_POSITION2,proindex);
-        cityFrag.getP().getD().setState(state);
-        cityFrag.getP().getD().setCitys(provinceListBean);
-        cityFrag.getP().getD().setProindex(proindex);
+        cityFrag.getDE().setState(state);
+        cityFrag.getDE().setCitys(provinceListBean);
+        cityFrag.getDE().setProindex(proindex);
         return  cityFrag;
     }
 
@@ -40,8 +40,8 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getCitys().getCityList(),this);
+        getUI().initRecycle();
+        getUI().LoadListData(getDE().getCitys().getCityList(),this);
     }
 
     @Override
@@ -49,24 +49,24 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos  = (int) v.getTag(R.id.position);
-                switch (getP().getD().getState()){
+                switch (getDE().getState()){
                     case 选择一个城市:
-                        for(int i=0;i<getP().getD().getCitys().getCityList().size();i++){
-                            getP().getD().getCitys().getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_NULL);
+                        for(int i=0;i<getDE().getCitys().getCityList().size();i++){
+                            getDE().getCitys().getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_NULL);
                             if(pos==i){
-                                getP().getD().getCitys().getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL);
+                                getDE().getCitys().getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL);
                             }
                         }
                         break;
                     case 选择多个城市:
-                        if(getP().getD().getCitys().getCityList().get(pos).getCheckStatus()!=CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
-                            getP().getD().getCitys().getCityList().get(pos).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL);
+                        if(getDE().getCitys().getCityList().get(pos).getCheckStatus()!=CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
+                            getDE().getCitys().getCityList().get(pos).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL);
                         }else{
-                            getP().getD().getCitys().getCityList().get(pos).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_NULL);
+                            getDE().getCitys().getCityList().get(pos).setCheckStatus(CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_NULL);
                         }
                         break;
                 }
-                getP().getU().notifyDataSetChanged();
+                getUI().notifyDataSetChanged();
                 break;
         }
     }
@@ -76,8 +76,8 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getCitys());
-                getArguments().putInt(ValueConstant.DATA_POSITION2,getP().getD().getProindex());
+                getArguments().putSerializable(ValueConstant.DATA_DATA, getDE().getCitys());
+                getArguments().putInt(ValueConstant.DATA_POSITION2,getDE().getProindex());
                 getBaseUIAct().onBackPressed();
                 break;
         }

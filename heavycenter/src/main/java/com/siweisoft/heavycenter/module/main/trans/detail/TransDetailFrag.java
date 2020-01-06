@@ -19,12 +19,12 @@ public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> 
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().setTransid(getArguments().getInt(ValueConstant.DATA_DATA,-1));
-        getP().getD().detailTrans(getP().getD().getTransid(), new UINetAdapter<TransDetailRes>(this,UINetAdapter.Loading) {
+        getDE().setTransid(getArguments().getInt(ValueConstant.DATA_DATA,-1));
+        getDE().detailTrans(getDE().getTransid(), new UINetAdapter<TransDetailRes>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(TransDetailRes o) {
                 //o= new Test().getTransRes().getResults().get(0);
-                getP().getU().initUI(o);
+                getUI().initUI(o);
             }
         });
     }
@@ -35,11 +35,11 @@ public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> 
         switch (v.getId()){
             case R.id.tv_receipt:
             case R.id.tv_lab_receipt:
-                getP().getU().setCurrent(1);
+                getUI().setCurrent(1);
                 break;
             case R.id.tv_delivenum:
             case R.id.tv_lab_delive:
-                getP().getU().setCurrent(0);
+                getUI().setCurrent(0);
                 break;
         }
     }

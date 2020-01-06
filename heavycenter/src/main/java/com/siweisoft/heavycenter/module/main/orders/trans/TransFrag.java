@@ -9,7 +9,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().initRefresh();
-        getP().getU().LoadListData(getP().getD().getData());
+        getUI().initRefresh();
+        getUI().LoadListData(getDE().getData());
     }
 }

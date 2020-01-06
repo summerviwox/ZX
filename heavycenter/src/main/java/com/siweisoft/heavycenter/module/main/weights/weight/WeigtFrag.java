@@ -29,13 +29,13 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().init(getP().getD().getWeightMsg());
+        getUI().init(getDE().getWeightMsg());
     }
 
 
     public void refresh(){
-        if(getP()!=null&&getP().getU()!=null){
-            getP().getU().init(getP().getD().getWeightMsg());
+        if(getP()!=null&&getUI()!=null){
+            getUI().init(getDE().getWeightMsg());
         }
     }
 
@@ -58,7 +58,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                 break;
         }
 
-        getP().getU().showTip(title,getP().getD().getWeightMsg(), new View.OnClickListener() {
+        getUI().showTip(title,getDE().getWeightMsg(), new View.OnClickListener() {
             @Override
             public void onClick(View vv) {
                 switch (vv.getId()){
@@ -67,26 +67,26 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                         switch (v.getId()){
                             case R.id.tv_weight:
                                 DecimalFormat df = new DecimalFormat("#.#");
-                                getP().getU().bind.tvWeight.setText(StringUtil.getStr(Double.parseDouble(df.format(d))));
+                                getUI().bind.tvWeight.setText(StringUtil.getStr(Double.parseDouble(df.format(d))));
                                 switch (v.getId()){
                                     case R.id.tv_weight:
-                                        getP().getD().getWeightMsg().getMessage().setWeigh(d);
+                                        getDE().getWeightMsg().getMessage().setWeigh(d);
                                         break;
                                     case R.id.tv_mz:
-                                        getP().getD().getWeightMsg().getMessage().setMz(d);
+                                        getDE().getWeightMsg().getMessage().setMz(d);
                                         break;
                                     case R.id.tv_pz:
-                                        getP().getD().getWeightMsg().getMessage().setPz(d);
+                                        getDE().getWeightMsg().getMessage().setPz(d);
                                         break;
                                     case R.id.tv_kc:
-                                        getP().getD().getWeightMsg().getMessage().setKc(d);
+                                        getDE().getWeightMsg().getMessage().setKc(d);
                                         break;
                                 }
 
-                                getP().getD().getWeightMsg().getMessage().setWeigh(d);
+                                getDE().getWeightMsg().getMessage().setWeigh(d);
                                 break;
                             case R.id.tv_kc:
-                                getP().getD().getWeightMsg().getMessage().setKc(d);
+                                getDE().getWeightMsg().getMessage().setKc(d);
                                 break;
                         }
                         break;
@@ -94,7 +94,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
                         break;
                 }
-                getP().getU().getFragManager2().finish(getBaseUIAct(), get容器(), true);
+                getUI().getFragManager2().finish(getBaseUIAct(), get容器(), true);
             }
         });
     }
