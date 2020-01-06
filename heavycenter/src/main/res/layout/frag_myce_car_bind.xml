@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_car_bind"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:iv_left="@drawable/icon_hv_back"
+            style_common:txt_mid ="绑定车辆"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/title"
+            android:id="@+id/labcar"
+            android:gravity="center_vertical"
+            android:text="车牌号"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:maxLength="7"
+            android:paddingLeft="10dp"
+            style_common:layout_constraintRight_toLeftOf="@+id/tv_y"
+            style_common:layout_constraintLeft_toRightOf="@+id/labcar"
+            style_common:layout_constraintBottom_toBottomOf="@+id/labcar"
+            style_common:layout_constraintBaseline_toBaselineOf="@+id/labcar"
+            android:hint="请输入内容"
+            android:id="@+id/et_name"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintBaseline_toBaselineOf="@+id/et_name"
+            android:layout_centerInParent="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:id="@+id/tv_y"
+            android:text="确定"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/drawable_hv_bg_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" />
+
+        <View
+            android:id="@+id/line"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/et_name"
+            android:background="@color/color_grey_300"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
+            app:srlEnableOverScrollBounce="false"
+            app:srlEnableAutoLoadmore="false"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/line"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

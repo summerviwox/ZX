@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_general"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content_acct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_base_graybg"
+        android:orientation="vertical">
+        <com.android.lib.view.item.ItemView
+            android:layout_marginTop="10dp"
+            style_common:color_txt_right="@color/color_base_txt_heavycenter_y"
+            android:id="@+id/item_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="绑定单位"
+            style_common:txt_right="绑定单位"
+            style_common:iv_left="@drawable/icon_hv_myce_unit"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_hv_sharp8_yell_stroke"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+
+
+
+        <com.android.lib.view.item.ItemView
+            android:id="@+id/item_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="仓库管理"
+            style_common:txt_right=""
+            style_common:iv_left="@drawable/icon_hv_myce_store"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_cricle_yel"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+        <com.android.lib.view.item.ItemView
+            android:id="@+id/item_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="物料管理"
+            style_common:txt_right=""
+            style_common:iv_left="@drawable/icon_hv_myce_good"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_cricle_yel"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+        <com.android.lib.view.item.ItemView
+            android:id="@+id/item_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="用户管理"
+            style_common:txt_right=""
+            style_common:iv_left="@drawable/icon_hv_myce_user"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_cricle_yel"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+        <com.android.lib.view.item.ItemView
+            android:id="@+id/item_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="车辆管理"
+            style_common:txt_right=""
+            style_common:iv_left="@drawable/icon_hv_myce_car"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_cricle_yel"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+        <com.android.lib.view.item.ItemView
+            android:layout_marginTop="10dp"
+            android:id="@+id/item_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            style_common:bg_divider="@color/color_item_content_gap"
+            style_common:iv_left="@drawable/icon_hv_myce_setting"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_left="设置"
+            style_common:txt_right=""
+            />
+    </LinearLayout>
+</layout>

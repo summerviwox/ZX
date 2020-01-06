@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_unit_list"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            app:txt_mid ="绑定单位"
+            app:iv_right ="@drawable/icon_hv_scan"
+            app:iv_right2 ="@drawable/icon_hv_add"
+            app:iv_left ="@drawable/icon_hv_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            android:layout_marginTop="5dp"
+            android:id="@+id/search"
+            android:elevation="2dp"
+            app:txt_mid = "请输入单位名称"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
+            app:srlEnableOverScrollBounce="false"
+            app:srlEnableLoadmore="false"
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

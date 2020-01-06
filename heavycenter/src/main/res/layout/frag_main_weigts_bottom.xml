@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_weigts_bottom"
+            type="com.siweisoft.heavycenter.data.netd.jpush.WeightMsg.MessageBean" />
+        <import type="android.view.View"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="588dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_hv_sharp5_white_solid"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:text='@{frag_main_weigts_bottom.contentCN}'
+            android:textColor="@color/color_grey_500"
+            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_select"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_select"
+            app:layout_constraintRight_toLeftOf="@+id/tv_select"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_hv_sharp2_yell_solid"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp"
+            android:text="重新选择"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+            android:id="@+id/circlebar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="45dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:gravity="right|center_vertical"
+            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+            app:layout_constraintRight_toLeftOf="@+id/tv2"
+            app:layout_constraintTop_toTopOf="@+id/circlebar"
+            app:layout_constraintBottom_toBottomOf="@+id/circlebar"
+            tools:text="0"
+            android:text='@{frag_main_weigts_bottom.order.totalRecord+""}'
+            android:id="@+id/tv_carnum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@{frag_main_weigts_bottom.order.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="22sp" />
+
+        <TextView
+            android:gravity="left|center_vertical"
+            app:layout_constraintLeft_toRightOf="@+id/tv_carnum"
+            app:layout_constraintRight_toRightOf="@+id/circlebar"
+            app:layout_constraintTop_toTopOf="@+id/circlebar"
+            app:layout_constraintBottom_toBottomOf="@+id/circlebar"
+            android:id="@+id/tv2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carnum"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="车"
+            android:textColor="@{frag_main_weigts_bottom.order.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/tv_goodname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false"
+            tools:text="2333"
+            android:text="@{frag_main_weigts_bottom.order.productName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintLeft_toRightOf="@+id/circlebar"
+            app:layout_constraintTop_toTopOf="@+id/circlebar" />
+
+        <TextView
+            android:id="@+id/tv_spes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false"
+            tools:text="2333"
+            android:text="@{frag_main_weigts_bottom.order.specification}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_goodname"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
+            app:layout_constraintLeft_toRightOf="@+id/tv_goodname" />
+
+
+        <TextView
+            android:visibility="@{frag_main_weigts_bottom==null?View.GONE:View.VISIBLE}"
+            android:background="@{frag_main_weigts_bottom.order.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{frag_main_weigts_bottom.order.type}"
+            android:padding="1dp"
+            android:textColor="@color/color_text_type"
+            app:layout_constraintTop_toTopOf="@+id/tv_comp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_comp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
+            android:textSize="@dimen/dimen_text_size_type" />
+
+        <TextView
+            android:layout_marginTop="7dp"
+            android:id="@+id/tv_comp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false"
+            tools:text="上海绿地"
+            android:text="@{frag_main_weigts_bottom.order.accessComName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
+            app:layout_constraintLeft_toRightOf="@+id/tv_type" />
+
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/icon_hv_cancle"
+            app:layout_constraintRight_toRightOf="@+id/tv_select"
+            app:layout_constraintTop_toTopOf="@+id/tv_goodname" />
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="预估发货净重"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="收货净重"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@+id/three"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{frag_main_weigts_bottom.jzCN}"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/four"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="预估发货毛重"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="收货毛重"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@+id/one"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{frag_main_weigts_bottom.mzCN}"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{frag_main_weigts_bottom.timeCN}"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{frag_main_weigts_bottom.timeCN}"
+                android:textColor="@color/color_grey_400"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            app:layout_constraintTop_toBottomOf="@+id/three"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="7dp"
+            android:singleLine="true"
+            android:text="保存"
+            android:textSize="21sp"
+            android:visibility="visible"
+
+            app:boo_one="true"
+            app:color_one="@color/color_hv_yelll"
+            app:color_stroke="@color/red"
+            app:color_stroke_two="@color/color_red_500"
+            app:color_two="@color/color_red_500"
+            app:color_txt="@color/white"
+            app:color_txt_two="@color/white"
+            app:corner="5dp"
+            app:corner_two="5dp"
+            app:stroke="0dp"
+            app:stroke_two="2dp" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

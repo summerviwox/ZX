@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="item_main_trans2"
+                type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
+        <import type="android.view.View"/>
+        <import type="com.android.lib.util.StringUtil"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:id="@+id/item_main_trans2"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:background="@drawable/bg_hv_sel_dark_light"
+                                                 android:foreground="?android:attr/selectableItemBackground">
+
+        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                android:id="@+id/circlebar"
+            android:layout_width="70dp"
+            android:layout_height="72dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                app:color_one="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:update="@{item_main_trans2.percent}"/>
+
+
+        <TextView
+                android:id="@+id/tv_totalnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:maxWidth="100dp"
+                android:singleLine="true"
+                android:text="@{item_main_trans2.isshowOpeBtn(item_main_trans2)?item_main_trans2.totalSuttleCN:item_main_trans2.YKCN}"
+                android:textColor="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="@dimen/dimen_text_size_orderweight"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_carnum"
+                app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+                app:layout_constraintRight_toRightOf="@+id/circlebar"
+                app:layout_constraintTop_toTopOf="@+id/circlebar"/>
+
+        <TextView
+                android:id="@+id/tv_carnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text='@{item_main_trans2.carNumberCN}'
+                android:textColor="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_carno"
+                app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+                app:layout_constraintRight_toRightOf="@+id/circlebar"
+                app:layout_constraintTop_toBottomOf="@+id/tv_totalnum"/>
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+                android:id="@+id/productName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans2.productNameAndSpecification)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                app:layout_constraintLeft_toRightOf="@id/circlebar"
+                app:layout_constraintRight_toLeftOf="@+id/iv_local"
+                app:layout_constraintTop_toTopOf="@id/circlebar"
+                tools:text="混凝土"/>
+
+
+
+
+
+        <TextView
+                tools:visibility="visible"
+                android:paddingRight="10dp"
+                android:id="@+id/tv_send_comname"
+                android:layout_width="wrap_content"
+                android:maxWidth="90dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{item_main_trans2.upLineTxt}"
+                android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+               app:layout_constraintLeft_toLeftOf="@+id/productName"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sendtime"
+                app:layout_constraintTop_toTopOf="@+id/tv_sendtime"
+                tools:text="上海绿地"/>
+
+
+        <TextView
+            android:textColor="@color/color_text_type"
+                android:id="@+id/type_send_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{item_main_trans2.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:includeFontPadding="false"
+                android:padding="1dp"
+                android:singleLine="true"
+                android:text="发往"
+            android:textSize="@dimen/dimen_text_size_type"
+                android:layout_marginRight="10dp"
+                android:visibility="@{item_main_trans2.upSecondTypeShow?View.VISIBLE:View.GONE}"
+                app:layout_constraintTop_toTopOf="@+id/tv_sendtime"
+                app:layout_constraintLeft_toRightOf="@+id/tv_send_comname"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sendtime"
+              />
+
+
+        <TextView
+                android:layout_marginRight="20dp"
+                android:id="@+id/tv_sendnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans2.develiverNum)+"t"}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_sendtime"
+                app:layout_constraintRight_toLeftOf="@+id/tv_sendtime"
+                tools:text="10.5t"/>
+
+
+
+
+        <TextView
+                android:paddingRight="10dp"
+                android:id="@+id/tv_receipt_comname"
+                android:layout_width="wrap_content"
+                android:maxWidth="90dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{item_main_trans2.downLineTxt}"
+                android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+               app:layout_constraintLeft_toLeftOf="@+id/tv_send_comname"
+                app:layout_constraintTop_toTopOf="@+id/tv_receipttime"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_receipttime"
+                tools:text="上海绿地"/>
+
+
+
+        <TextView
+            android:textColor="@color/color_grey_900"
+                app:layout_constraintLeft_toRightOf="@+id/tv_receipt_comname"
+                android:id="@+id/type_receipt_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{item_main_trans2.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:includeFontPadding="false"
+                android:padding="1dp"
+                android:singleLine="true"
+                android:text="发来"
+            android:textSize="@dimen/dimen_text_size_type"
+                android:layout_marginRight="10dp"
+                android:visibility="@{item_main_trans2.downSecondTypeShow?View.VISIBLE:View.GONE}"
+                app:layout_constraintTop_toTopOf="@+id/tv_receipttime"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_receipttime"/>
+
+
+        <TextView
+                android:id="@+id/tv_receiptnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text='@{item_main_trans2.receiveNumCN}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_receipttime"
+                app:layout_constraintRight_toLeftOf="@+id/tv_receipttime"
+                android:layout_marginRight="20dp"
+                tools:text="10.5t"/>
+
+
+        <TextView
+            android:gravity="right|center_vertical"
+            tools:text="03-08 17:14"
+            android:layout_marginTop="10dp"
+                android:id="@+id/tv_sendtime"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="@{item_main_trans2.fhTimeCN}"
+                android:textColor="@color/color_grey_400"
+                android:textSize="@dimen/dimen_text_size_datetime"
+
+                app:layout_constraintTop_toBottomOf="@+id/productName"
+                app:layout_constraintRight_toRightOf="parent"
+          />
+
+
+        <TextView
+            android:gravity="right|center_vertical"
+            tools:text="03-08 17:14"
+                android:id="@+id/tv_receipttime"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="@{item_main_trans2.shTimeCN}"
+                android:textColor="@color/color_grey_400"
+            android:textSize="@dimen/dimen_text_size_datetime"
+                android:visibility="@{item_main_trans2.isshowOpeBtn(item_main_trans2)?View.GONE:View.VISIBLE}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sendtime"
+                android:layout_marginTop="7dp"
+              />
+
+
+        <TextView
+                android:id="@+id/tv_y"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/drawable_hv_bg_btn_login"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="@{item_main_trans2.isshowOpeBtn(item_main_trans2)?View.VISIBLE:View.GONE}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"
+                tools:visibility="gone"/>
+
+
+        <TextView
+                android:id="@+id/tv_carlicenseno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@{item_main_trans2.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans2.carLicenseNo)}'
+                android:textColor="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="12sp"
+                android:visibility="@{item_main_trans2.showCarLicense?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/productName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/productName"/>
+
+
+        <ImageView
+            android:visibility="@{item_main_trans2.isFinished(item_main_trans2)?View.GONE:View.VISIBLE}"
+                android:id="@+id/iv_local"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@{item_main_trans2.IDiliverCom?@drawable/icon_hv_local:@drawable/icon_hv_local_blue}"
+                app:layout_constraintBottom_toBottomOf="@+id/productName"
+                app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno"
+                app:layout_constraintTop_toTopOf="@+id/productName"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

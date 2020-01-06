@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_trans_search"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/root_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_good"
+            style_common:txt_left="产品/规格"
+            style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_unitname"
+            style_common:txt_left="单位名称  "
+            style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_unitaddr"
+            style_common:txt_left="单位地址  "
+            style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_unitcar"
+            style_common:txt_left="车辆牌照  "
+            style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+<View
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

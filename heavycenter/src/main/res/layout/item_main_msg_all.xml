@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_main_msg_all"
+            type="com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean.ResultsBean" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="true"
+        card_view:cardElevation="2px"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dimen_recylce_item_margin"
+        android:layout_marginRight="@dimen/dimen_recylce_item_margin"
+        android:layout_marginTop="@dimen/dimen_recylce_item_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:padding="@dimen/dimen_recylce_item_padding"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="@dimen/dimen_text_size_productionName"
+                android:id="@+id/tv_sendname"
+                style_common:layout_constraintLeft_toLeftOf="parent"
+                style_common:layout_constraintTop_toTopOf="parent"
+                android:includeFontPadding="false"
+                android:textColor="@color/color_recylce_item_title_txtcolor"
+                android:text="@{item_main_msg_all.senderName}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                style_common:layout_constraintTop_toTopOf="@+id/tv_sendname"
+                style_common:layout_constraintBottom_toBottomOf="@+id/tv_sendname"
+                style_common:layout_constraintLeft_toRightOf="@+id/tv_sendname"
+                android:includeFontPadding="false"
+                android:id="@+id/tv_des"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/dimen_text_size_plannum"
+                android:visibility="visible"
+                android:text="接受"
+                android:textColor="@color/color_hv_yelll"
+                android:background="@drawable/bg_hv_sharp1_yell_stroke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style_common:layout_constraintRight_toRightOf="parent"
+                style_common:layout_constraintTop_toTopOf="parent"
+                android:includeFontPadding="false"
+                android:layout_gravity="top"
+                android:id="@+id/tv_date"
+                android:textColor="@color/color_recylce_item_date_txtcolor"
+                android:textSize="@dimen/dimen_text_size_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/tv_txt"
+                style_common:layout_constraintTop_toBottomOf="@+id/tv_sendname"
+                style_common:layout_constraintLeft_toLeftOf="@+id/tv_sendname"
+                android:layout_marginTop="@dimen/dimen_recylce_item_inner_margin"
+                android:layout_marginBottom="@dimen/dimen_recylce_item_inner_margin"
+                android:includeFontPadding="false"
+                android:textColor="@color/color_recylce_item_content_txtcolor"
+                android:textSize="@dimen/dimen_text_size_unit"
+                android:text="@{item_main_msg_all.messageContent}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <android.support.constraint.ConstraintLayout
+                style_common:layout_constraintLeft_toLeftOf="parent"
+                style_common:layout_constraintTop_toBottomOf="@+id/tv_txt"
+                android:id="@+id/ll_fuction"
+                android:visibility="visible"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:layout_marginTop="5dp"
+                    style_common:layout_constraintRight_toRightOf="parent"
+                    style_common:layout_constraintTop_toTopOf="parent"
+                    android:includeFontPadding="false"
+                    android:id="@+id/bt_reject"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="@dimen/dimen_recylce_item_btn_txtsize"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/color_hv_red"
+
+                    style_common:color_two="@color/white"
+                    style_common:stroke_two="0dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/color_hv_yelll"
+                    style_common:boo_one="true"
+                    android:text="拒绝"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:layout_marginRight="15dp"
+                    style_common:layout_constraintRight_toLeftOf="@+id/bt_reject"
+                    style_common:layout_constraintBottom_toBottomOf="@+id/bt_reject"
+                    android:includeFontPadding="false"
+                    android:id="@+id/bt_agree"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="@dimen/dimen_recylce_item_btn_txtsize"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/white"
+                    style_common:stroke_two="0dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/color_hv_yelll"
+                    style_common:boo_one="true"
+                    android:text="接受"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:layout_marginRight="15dp"
+                    style_common:layout_constraintRight_toLeftOf="@+id/bt_agree"
+                    style_common:layout_constraintBottom_toBottomOf="@+id/bt_agree"
+                    android:includeFontPadding="false"
+                    android:id="@+id/bt_mana"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="@dimen/dimen_recylce_item_btn_txtsize"
+                    android:visibility="gone"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/white"
+                    style_common:stroke_two="0dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/color_hv_yelll"
+                    style_common:boo_one="true"
+                    android:text="设为管理员"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</layout>

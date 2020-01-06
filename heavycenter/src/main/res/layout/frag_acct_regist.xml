@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_acct_regist"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/icon_hv_bg"
+        android:orientation="vertical">
+        <ImageView
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/icon_hv_back"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ftv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingBottom="2.5dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="2.5dp"
+            android:textColor="@color/color_title_select"
+            android:textSize="17sp"
+            android:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/title"
+            style_common:layout_constraintTop_toTopOf="parent"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="100dp"
+            android:text="新用户注册"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            style_common:layout_constraintTop_toBottomOf="@+id/title"
+            style_common:inputType="0"
+            android:id="@+id/phone"
+            style_common:iv_right = "@drawable/icon_hv_clear"
+            style_common:txt_maxlenth = "11"
+            style_common:txt_mid = "请输入手机号"
+            style_common:iv_left="@drawable/icon_hv_phone"
+            android:layout_marginTop="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            />
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            style_common:layout_constraintLeft_toLeftOf="@+id/phone"
+            style_common:layout_constraintRight_toRightOf="@+id/phone"
+            style_common:layout_constraintTop_toBottomOf="@+id/phone"
+            android:id="@+id/code"
+            style_common:txt_mid = "请输入验证码"
+            style_common:iv_left="@drawable/icon_hv_phone"
+            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            style_common:boo_one = "true"
+            />
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            style_common:layout_constraintLeft_toLeftOf="@+id/code"
+            style_common:layout_constraintRight_toRightOf="@+id/code"
+            style_common:layout_constraintTop_toBottomOf="@+id/code"
+            android:id="@+id/pwd"
+            style_common:txt_mid = "请输入密码"
+            style_common:iv_left="@drawable/icon_hv_pwd"
+            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            style_common:inputType="1"
+            />
+
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            style_common:layout_constraintLeft_toLeftOf="@+id/pwd"
+            style_common:layout_constraintRight_toRightOf="@+id/pwd"
+            style_common:layout_constraintTop_toBottomOf="@+id/pwd"
+            android:id="@+id/repwd"
+            style_common:txt_mid = "重复密码"
+            style_common:iv_left="@drawable/icon_hv_pwd"
+            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            style_common:inputType="1"
+            />
+
+
+        <com.siweisoft.heavycenter.module.view.item.ReadView
+            style_common:layout_constraintLeft_toLeftOf="@+id/repwd"
+            style_common:layout_constraintRight_toRightOf="@+id/repwd"
+            style_common:layout_constraintTop_toBottomOf="@+id/repwd"
+            android:id="@+id/tv_read"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            style_common:layout_constraintLeft_toLeftOf="@+id/tv_read"
+            style_common:layout_constraintRight_toRightOf="@+id/tv_read"
+            style_common:layout_constraintTop_toBottomOf="@+id/tv_read"
+            android:gravity="center"
+            android:id="@+id/regist"
+            android:text="注册"
+            android:layout_marginTop="40dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+
+            android:singleLine="true"
+            android:textSize="21sp"
+            android:visibility="visible"
+            style_common:color_one="@color/color_hv_yelll"
+            style_common:stroke="0dp"
+            style_common:color_stroke="@color/red"
+            style_common:corner="20dp"
+            style_common:color_txt="@color/white"
+
+            style_common:color_two="@color/color_grey_400"
+            style_common:stroke_two="0dp"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:corner_two="20dp"
+            style_common:color_txt_two="@color/color_hv_yelll"
+            style_common:boo_one="true"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+</android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_weigts_bottom_resel"
+            type="com.siweisoft.heavycenter.data.netd.jpush.WeightMsg.MessageBean" />
+        <import type="android.view.View"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="588dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_hv_sharp5_white_solid"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{frag_main_weigts_bottom_resel.contentCN}'
+            android:textColor="@color/color_grey_500"
+            android:textSize="15sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_select"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_select_sel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_hv_sharp2_yell_solid"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="5dp"
+            android:text="重新选择"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@+id/tv_select_sel"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_save_sel"
+                android:gravity="center"
+                android:id="@+id/tv_tips"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:includeFontPadding="false"
+                tools:text="此次称重信息将保存\n,您需要后续在订单中选择进行关联的称重信息"
+                android:textColor="@color/black"
+                android:textSize="@dimen/hv_dimen_text_aaa" />
+
+
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+           app:layout_constraintTop_toBottomOf="@+id/tv_tips"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/tv_save_sel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="7dp"
+            android:singleLine="true"
+            android:text="保存"
+            android:textSize="21sp"
+            android:visibility="visible"
+
+            app:boo_one="true"
+            app:color_one="@color/color_hv_yelll"
+            app:color_stroke="@color/red"
+            app:color_stroke_two="@color/color_red_500"
+            app:color_two="@color/color_red_500"
+            app:color_txt="@color/white"
+            app:color_txt_two="@color/white"
+            app:corner="5dp"
+            app:corner_two="5dp"
+            app:stroke="0dp"
+            app:stroke_two="2dp" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

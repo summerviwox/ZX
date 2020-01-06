@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_mana_user_new2"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:txt_mid ="添加用户"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "姓名"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:background="@color/color_item_content"
+            android:paddingLeft="@dimen/dimen_item_content_left_padding"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_h">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_marginLeft="8dp"
+                android:text="角色"
+                android:textSize="15dp"
+                android:textColor="@color/color_item_content_left_txt_color"
+                android:gravity="center_vertical"
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_hv_sel_sharp10_yell_while"
+                android:textColor="@color/color_yell_white"
+                android:textSize="16sp"
+                android:text="用户"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_hv_sel_sharp10_yell_while"
+                android:textColor="@color/color_yell_white"
+                android:textSize="16sp"
+                android:text="驾驶员"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/bg_hv_sel_sharp10_yell_while"
+                android:textColor="@color/color_white_yell"
+                android:textSize="16sp"
+                android:text="管理员"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_hv_sel_sharp10_yell_while"
+            android:textColor="@color/color_yell_white"
+            android:textSize="16sp"
+            android:text="发送邀请"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_setting"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:txt_mid ="设置"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+        app:srlEnablePureScrollMode="true"
+        app:srlDragRate="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.android.lib.view.item.ItemView
+            android:id="@+id/item_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:txt_left="退出"
+            style_common:txt_right="5"
+            style_common:iv_left="@drawable/icon_hv_myce_good"
+            style_common:bg_divider="@color/color_item_content_gap"
+            />
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+
+</layout>

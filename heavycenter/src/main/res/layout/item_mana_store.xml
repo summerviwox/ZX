@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_mana_store"
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
+    </data>
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
+        android:layout_width="match_parent"
+        sml:sml_auto_open_percent="0.2"
+        android:layout_height="80dp"
+        sml:sml_scroller_duration="250">
+
+    <TextView
+            android:layout_gravity="right"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="停用"
+            android:orientation="horizontal"
+            android:background="@color/red"
+        android:id="@id/smMenuViewRight"
+            android:layout_width="60dp"
+            android:weightSum="1"
+            android:layout_height="match_parent"/>
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@id/smContentView"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline1"
+                android:orientation="horizontal"
+                sml:layout_constraintGuide_percent="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+
+            <ImageView
+                android:layout_marginLeft="10dp"
+                sml:layout_constraintTop_toTopOf="parent"
+                sml:layout_constraintBottom_toBottomOf="parent"
+                sml:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/ivleft"
+                android:src="@drawable/drawable_hv_sel_mana_store"
+                android:layout_width="55dp"
+                android:layout_height="55dp" />
+
+
+            <TextView
+                android:id="@+id/storename"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                sml:layout_constraintBottom_toBottomOf="@+id/guideline1"
+                sml:layout_constraintLeft_toRightOf="@+id/ivleft"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                android:text="@{item_mana_store.warehouseName}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                sml:layout_constraintTop_toBottomOf="@+id/guideline1"
+                android:layout_marginTop="5dp"
+              sml:layout_constraintLeft_toLeftOf="@+id/storename"
+                sml:layout_constraintRight_toLeftOf="@+id/tv_maxstock"
+                android:id="@+id/tv_minstock"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                sml:layout_constraintTop_toTopOf="@+id/tv_minstock"
+                sml:layout_constraintBottom_toBottomOf="@+id/tv_minstock"
+               sml:layout_constraintLeft_toRightOf="@+id/tv_minstock"
+                sml:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="10dp"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:id="@+id/tv_maxstock"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
+</layout>

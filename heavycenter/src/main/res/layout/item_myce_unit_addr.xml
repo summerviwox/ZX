@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item_myce_unit_addr"
+            type="String" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@color/color_item_content"
+    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_item_content_h">
+
+        <TextView
+            android:text="123444"
+            android:id="@+id/tv_txt"
+            android:layout_marginLeft="8dp"
+            android:textSize="15dp"
+            android:textColor="@color/color_item_content_left_txt_color"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginLeft="8dp"
+        android:id="@+id/divide"
+        android:background="@color/color_item_content_gap"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_item_content_gap_size"/>
+</LinearLayout>
+</layout>

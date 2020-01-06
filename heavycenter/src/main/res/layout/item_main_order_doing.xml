@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_main_order_doing"
+            type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_ingorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_hv_sel_dark_light"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:transitionName="doingorder">
+
+
+        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+            android:id="@+id/circlebar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:color_one="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            app:update="@{item_main_order_doing.percent}"
+            android:layout_centerInParent="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/circlebar"
+            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+            app:layout_constraintRight_toRightOf="@+id/circlebar"
+            app:layout_constraintTop_toTopOf="@+id/circlebar">
+
+
+            <TextView
+                tools:text="0"
+                android:text='@{item_main_order_doing.totalRecord+""}'
+                android:id="@+id/tv_carnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_orderweight" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carnum"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="车"
+                android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="@+id/tv_nametel"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
+            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+            app:layout_constraintRight_toRightOf="@+id/circlebar">
+
+            <TextView
+                android:text="@{item_main_order_doing.actualShCN2}"
+                tools:text="0"
+                android:id="@+id/tv_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="7"
+                android:singleLine="true"
+                android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_weightnum" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:text="@{item_main_order_doing.planNumberCN2}"
+                tools:text="0"
+                android:id="@+id/tv_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="7"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_text_size_weightnum" />
+        </LinearLayout>
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="100dp" />
+
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:layout_marginLeft="5dp"
+            tools:text="混凝土"
+            android:id="@+id/tv_goodname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@{item_main_order_doing.productNameAndSpecification}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintLeft_toRightOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:includeFontPadding="false"
+            android:id="@+id/tv_carno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@{item_main_order_doing.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+            android:singleLine="true"
+            android:text="@{item_main_order_doing.carLicenseNo}"
+            android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="@dimen/dimen_text_size_plannum"
+            android:visibility="@{item_main_order_doing.carLicenseNo==null?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_goodname"
+            tools:text="沪12345" />
+
+
+        <TextView
+
+            tools:text="来自"
+            android:background="@{item_main_order_doing.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:padding="1dp"
+            android:singleLine="true"
+            android:text="@{item_main_order_doing.type}"
+            android:textColor="@color/color_text_type"
+            android:textSize="@dimen/dimen_text_size_type"
+           app:layout_constraintTop_toTopOf="@+id/tv_duimian"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
+     />
+
+        <TextView
+            tools:text="王尼玛"
+            android:id="@+id/tv_duimian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@{item_main_order_doing.shortAccessComName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintLeft_toRightOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goodname" />
+
+
+        <TextView
+            android:id="@+id/tv_carlisence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center_vertical"
+            tools:text="开始时间：2017/12/09 10:00"
+            android:text='@{item_main_order_doing.startTimeCN2}'
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/dimen_text_size_datetime"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_duimian" />
+
+        <TextView
+            android:text='@{item_main_order_doing.finishTimeCN2}'
+            tools:text="结束时间：2017/12/09 10:00"
+            android:id="@+id/tv_nametel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/dimen_text_size_datetime"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlisence" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

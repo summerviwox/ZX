@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_unit_new"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:iv_right2="@drawable/icon_hv_save"
+            style_common:txt_mid ="新建单位"
+            style_common:iv_left="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlEnablePureScrollMode="true"
+            app:srlDragRate="0.1"
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="30"
+            android:id="@+id/item_unitname"
+            style_common:txt_left = "单位名称"
+            style_common:txt_hint = "请输入公司名称"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_nunitshortname"
+            style_common:txt_maxlenth="4"
+            style_common:txt_left = "单位简称"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/upunit"
+            style_common:txt_left = "上级单位"
+            style_common:txt_hint = "请选择（可不选）"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/unitaddr"
+            style_common:txt_left = "单位地址"
+            style_common:txt_hint = "请选择"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/area"
+            style_common:txt_left = "送货区域"
+            style_common:txt_hint = "请选择"
+            style_common:iv_right = "@drawable/icon_arraw"
+            style_common:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/unitcontact"
+            style_common:txt_left = "联系人    "
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="11"
+            android:id="@+id/unitphone"
+            style_common:inputType="0"
+            style_common:txt_left = "联系电话"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

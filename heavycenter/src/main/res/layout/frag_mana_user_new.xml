@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_mana_user_new"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_tel"
+                style_common:inputType="0"
+                style_common:txt_maxlenth="11"
+                style_common:minwidth ="40dp"
+                style_common:txt_left = "手机号"
+                style_common:txt_hint = "请输入"
+                style_common:boo_edit = "true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <LinearLayout
+                android:background="@color/color_item_content"
+                android:paddingLeft="@dimen/dimen_item_content_left_padding"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_item_content_h">
+
+                <TextView
+
+                    android:layout_marginLeft="8dp"
+                    android:text="角色"
+                    android:textSize="15dp"
+                    android:textColor="@color/color_item_content_left_txt_color"
+                    android:gravity="center_vertical"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent" />
+
+
+                <TextView
+                    android:id="@+id/one"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                    android:textColor="@color/color_white_yell"
+                    android:textSize="16sp"
+                    android:text="用户"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/two"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                    android:textColor="@color/color_white_yell"
+                    android:textSize="16sp"
+                    android:text="驾驶员"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/three"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                    android:textColor="@color/color_white_yell"
+                    android:textSize="16sp"
+                    android:text="管理员"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:text="发送邀请"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/enter"
+
+                    android:singleLine="true"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="20dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_grey_400"
+                    style_common:stroke_two="0dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="20dp"
+                    style_common:color_txt_two="@color/color_hv_yelll"
+                    style_common:boo_one="true"
+                    />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:textSize="12sp"
+                    android:textColor="@color/color_grey_400"
+                    android:gravity="center"
+                    android:text="您也可以使用右上角扫一扫，\n 通过扫描对方二维码开启快速邀请对方!"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

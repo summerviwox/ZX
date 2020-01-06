@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_main_msg_public"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@color/color_base_graybg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:background="@color/white"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:text="张先生"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:textColor="@color/gray"
+                    android:textSize="13sp"
+                    android:text="2017/12/13 12:33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:textColor="@color/gray"
+                android:textSize="15sp"
+                android:text="fdsfdsfdsfdsfdsfsfdsffffffffffffdsffffffffffffffffff"
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <View
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@color/color_grey_400"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
+                    android:text="拒绝"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
+                    android:text="接受"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_unit_nobind"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title"
+            style_common:txt_mid ="绑定单位"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_left ="@drawable/icon_hv_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tv_bindtip"
+            style_common:layout_constraintTop_toBottomOf="@+id/title"
+           style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="120dp"
+            android:textSize="15sp"
+            android:textColor="@color/color_grey_500"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

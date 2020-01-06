@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_acct_role"
+            type="String" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/icon_hv_bg"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="110dp"
+            android:text="选择角色"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:src="@drawable/icon_hv_role"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:text="请选择正确的角色\n一经选择无法更改"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:gravity="center"
+                android:id="@+id/tv_driver"
+                android:text="驾驶员"
+                android:layout_marginTop="35dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
+                android:singleLine="true"
+                android:textSize="22sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:stroke="0dp"
+                style_common:color_stroke="@color/red"
+                style_common:corner="20dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_grey_400"
+                style_common:stroke_two="0dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="20dp"
+                style_common:color_txt_two="@color/color_hv_yelll"
+                style_common:boo_one="true"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:gravity="center"
+                android:id="@+id/tv_notdriver"
+                android:text="非驾驶员"
+                android:layout_marginTop="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
+                android:singleLine="true"
+                android:textSize="22sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:stroke="0dp"
+                style_common:color_stroke="@color/red"
+                style_common:corner="20dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_grey_400"
+                style_common:stroke_two="0dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="20dp"
+                style_common:color_txt_two="@color/color_hv_yelll"
+                style_common:boo_one="true"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

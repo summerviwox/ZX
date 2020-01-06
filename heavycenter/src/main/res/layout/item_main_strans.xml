@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item_main_strans"
+            type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
+        <import type="com.android.lib.util.StringUtil"/>
+        <import type="android.view.View"/>
+    </data>
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/ll_trans"
+        android:orientation="horizontal"
+      android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        >
+
+
+        <RelativeLayout
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            android:background="@{item_main_strans.IDiliverCom?@drawable/icon_hv_main_strains_yell_1:@drawable/icon_hv_main_strains_blue_1}"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@{item_main_strans.carNumberCN2}"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                tools:text="fdf"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:background="@{item_main_strans.IDiliverCom?@drawable/icon_hv_main_strains_yell_2:@drawable/icon_hv_main_strains_blue_2}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:text="@{item_main_strans.carLicenseNoCN}"
+                    android:singleLine="true"
+                    android:id="@+id/tv_carlicenseno"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    tools:text="沪D12345"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/v1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_carlicenseno"
+                    android:background="@color/color_grey_300"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+
+
+                <TextView
+                    android:text="@{item_main_strans.YKCN}"
+                    android:singleLine="true"
+                    android:id="@+id/tv_yk"
+                    app:layout_constraintLeft_toLeftOf="@+id/lab_sf"
+                   app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_carlicenseno"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    tools:text="沪D12345"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+                <TextView
+                    android:text="@{item_main_strans.fhTimeCN2}"
+                    android:includeFontPadding="false"
+                    android:id="@+id/tv_starttime"
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tv_carlicenseno"
+                    app:layout_constraintTop_toBottomOf="@+id/v1"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    tools:text="2017-12-12 10:10"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:text="@{item_main_strans.shTimeCN2}"
+                    android:includeFontPadding="false"
+                    android:id="@+id/tv_endtime"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tv_carlicenseno"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_starttime"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    tools:text="2017-12-12 10:10"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:id="@+id/lab_sf"
+                    android:layout_marginLeft="10dp"
+                   app:layout_constraintLeft_toRightOf="@+id/tv_starttime"
+                    app:layout_constraintTop_toTopOf="@+id/tv_starttime"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_starttime"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    android:text="实发:"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/lab_ss"
+                    android:layout_marginLeft="10dp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_endtime"
+                    app:layout_constraintTop_toTopOf="@+id/tv_endtime"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_endtime"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    android:text="实收:"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:text="@{item_main_strans.develiverNumCN}"
+                    android:id="@+id/tv_sf"
+                    android:layout_marginLeft="10dp"
+                    app:layout_constraintLeft_toRightOf="@+id/lab_sf"
+                    app:layout_constraintTop_toTopOf="@+id/lab_sf"
+                    app:layout_constraintBottom_toBottomOf="@+id/lab_sf"
+                    android:textSize="15sp"
+                    tools:text="100t"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@{item_main_strans.receiveNumCN}"
+                    android:id="@+id/tv_ss"
+                    android:layout_marginLeft="10dp"
+                    app:layout_constraintLeft_toRightOf="@+id/lab_ss"
+                    app:layout_constraintTop_toTopOf="@+id/tv_endtime"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_endtime"
+                    android:textSize="15sp"
+                    tools:text="100t"
+                    android:textColor="@{item_main_strans.IDiliverCom?@color/color_hv_yelll:@color/color_yell_blue}"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+
+                android:id="@+id/tv_driver"
+                android:layout_marginTop="7dp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_endtime"
+                app:layout_constraintTop_toBottomOf="@+id/tv_endtime"
+                android:textSize="14sp"
+                    android:text="@{item_main_strans.trueNameCN2}"
+                android:textColor="@color/color_grey_500"
+                android:singleLine="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@{item_main_strans.telCN2}"
+                    android:layout_marginLeft="20dp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_driver"
+                    app:layout_constraintTop_toTopOf="@+id/tv_driver"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_driver"
+                    android:id="@+id/tv_tel"
+                    android:textSize="14sp"
+                    tools:text="100t"
+                    android:textColor="@color/color_grey_500"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+    </LinearLayout>
+</layout>

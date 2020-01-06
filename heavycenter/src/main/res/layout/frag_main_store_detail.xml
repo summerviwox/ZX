@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_store_detail"
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
+
+        <import type="com.android.lib.util.StringUtil" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_base"
+        android:orientation="vertical">
+
+        <com.android.lib.view.title.TitleView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_base"
+            android:elevation="2dp"
+            app:iv_left="@drawable/icon_hv_back"
+            app:iv_right="@drawable/icon_hv_scan"
+            app:iv_right2="@drawable/icon_hv_panku"
+            app:txt_mid="仓库" />
+
+
+        <TextView
+            android:id="@+id/tv_housename"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:text="@{StringUtil.getStr(frag_main_store_detail.warehouseName)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_productName"
+            app:layout_constraintLeft_toRightOf="@+id/tv_housename"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_housename"
+            android:singleLine="true"
+            android:layout_marginLeft="14dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:text="@{StringUtil.getStr(frag_main_store_detail.productName)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_housename"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:text="@{StringUtil.getStr(frag_main_store_detail.specifications)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.siweisoft.heavycenter.module.view.store.StoreView
+            app:layout_constraintTop_toBottomOf="@+id/tv_housename"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/store"
+            android:layout_marginTop="@dimen/dimen_frag_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/store"
+            android:background="@color/color_grey_200"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="#f6ab12"
+                    android:textSize="25sp"
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayStorage)+"t"}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="12sp"
+                    android:text="今入"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="#30e5a3"
+                    android:textSize="25sp"
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayOutStorage)+"t"}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="12sp"
+                    android:text="今出"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="#ff6600"
+                    android:textSize="25sp"
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayProfitNum)+"t"}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="12sp"
+                    android:text="盘点盈亏"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info"
+            android:id="@+id/tip"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_grey_300"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="时间"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="车辆"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="驾驶员"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="净重"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tip"
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
+            app:srlEnableOverScrollBounce="false"
+            android:id="@+id/refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <com.android.lib.view.LinearRecycleView
+                android:background="@color/white"
+                android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

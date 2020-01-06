@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="item_main_trans_detail"
+                type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes.DeliverRecordListBean" />
+
+        <import type="com.android.lib.util.StringUtil"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="5dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/midline"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/color_hv_yelll"
+            android:id="@+id/lab_mao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:text="毛"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            tools:text="124"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:textColor="@color/black"
+            android:id="@+id/tv_mao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.gross+""}'
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            app:layout_constraintLeft_toRightOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:id="@+id/tv_maotime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:text="@{item_main_trans_detail.grossTimeCN}"
+            app:layout_constraintRight_toLeftOf="@+id/lab_ck"
+            android:layout_marginRight="5dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="仓库"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintLeft_toRightOf="@+id/midline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:id="@+id/tv_ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            tools:text="A-15"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintLeft_toRightOf="@+id/lab_ck"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+
+            android:textColor="@color/white"
+            android:background="@drawable/bg_hv_cirlce_solid_yell"
+            android:id="@+id/lab_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="皮"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_mao" />
+
+
+        <TextView
+            tools:text="124"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:textColor="@color/black"
+            android:id="@+id/tv_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.tare+""}'
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/lab_pi" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:id="@+id/tv_pitime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:text="@{item_main_trans_detail.tareTimeCN}"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintRight_toLeftOf="@+id/lab_bz"
+            android:layout_marginRight="5dp" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_bz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/midline" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:id="@+id/tv_bz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            tools:text="A-15"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/lab_bz" />
+
+        <TextView
+            android:textColor="@color/color_hv_yelll"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:id="@+id/lab_kou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="扣"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_pi" />
+
+
+        <TextView
+            tools:text="124"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:textColor="@color/black"
+            android:id="@+id/tv_kou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.deduct+""}'
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/lab_kou"
+            android:layout_marginRight="5dp" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:id="@+id/tv_koutime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:text="@{item_main_trans_detail.deductTimeCN}"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/tv_kou" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_czr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="操作人"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/midline" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:id="@+id/tv_czr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            tools:text="A-15"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/lab_czr" />
+
+
+        <TextView
+            android:textColor="@color/color_hv_yelll"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:id="@+id/lab_jin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="净"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_kou" />
+
+
+        <TextView
+            tools:text="124"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_jin"
+            android:textColor="@color/black"
+            android:id="@+id/tv_jin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.netWeightCN}'
+            app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
+            app:layout_constraintLeft_toRightOf="@+id/lab_jin" />
+
+
+        <TextView
+            android:visibility="gone"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_jin"
+            android:id="@+id/tv_jintime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="10:00"
+            android:textSize="@dimen/dimen_text_size_unit"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
+            app:layout_constraintLeft_toRightOf="@+id/tv_jin" />
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_mao"
+            app:layout_constraintBottom_toTopOf="@+id/lab_pi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_pi"
+            app:layout_constraintBottom_toTopOf="@+id/lab_kou"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_kou"
+            app:layout_constraintBottom_toTopOf="@+id/lab_jin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lab_jin"
+            android:background="@color/color_grey_300"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

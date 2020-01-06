@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_mana_store_new"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:txt_mid ="新建仓库"
+            style_common:iv_right2 ="@drawable/icon_hv_save"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        app:srlEnablePureScrollMode="true"
+        app:srlDragRate="0.2"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_name"
+            style_common:txt_left = "仓库名称"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="11"
+            android:id="@+id/item_maxstock"
+            style_common:inputType="3"
+            style_common:txt_left = "最大库存"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="11"
+            android:id="@+id/item_minstock"
+            style_common:inputType="3"
+            style_common:txt_left = "安全库存"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

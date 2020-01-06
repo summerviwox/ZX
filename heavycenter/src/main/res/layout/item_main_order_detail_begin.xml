@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="item_main_order_detail_begin"
+                type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+        <import type="com.android.lib.util.data.DateFormatUtil"/>
+        <import type="android.view.View" />
+    </data>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/ll_neworder"
+        >
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            tools:text="混凝土"
+            android:includeFontPadding="false"
+            android:id="@+id/tv_productName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:text="@{item_main_order_detail_begin.productNameAndSpecification}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            tools:text="沪123445"
+            android:visibility="@{item_main_order_detail_begin==null?View.GONE:View.VISIBLE}"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_productName"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+            android:id="@+id/tv_planmun"
+            android:background="@{item_main_order_detail_begin.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+            android:singleLine="true"
+            android:textColor="@{item_main_order_detail_begin.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="@dimen/dimen_text_size_plannum"
+            android:text='@{item_main_order_detail_begin.planNumberCN}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+
+            tools:text="来自"
+            android:visibility="@{item_main_order_detail_begin==null?View.GONE : View.VISIBLE}"
+            android:background="@{item_main_order_detail_begin.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:padding="1dp"
+            android:includeFontPadding="false"
+       app:layout_constraintTop_toTopOf="@+id/tv_duimian"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/tv_type"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/color_text_type"
+            android:textSize="@dimen/dimen_text_size_type"
+            android:text='@{item_main_order_detail_begin.type}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            tools:text="王尼玛"
+            android:layout_marginTop="14dp"
+            android:includeFontPadding="false"
+           app:layout_constraintLeft_toRightOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName"
+            android:id="@+id/tv_duimian"
+            android:gravity="center"
+            android:singleLine="true"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:text='@{item_main_order_detail_begin.accessComName}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:visibility="gone"
+            tools:text="计划开始时间: "
+            android:text="@{item_main_order_detail_begin.planTimeCN}"
+            android:includeFontPadding="false"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"
+            android:id="@+id/tv_plantime"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="bottom|right"
+            android:singleLine="true"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/dimen_text_size_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

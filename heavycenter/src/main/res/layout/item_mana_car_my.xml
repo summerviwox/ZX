@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+                name="item_mana_car_my"
+                type="com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean.CarInfoRes" />
+    </data>
+
+
+    <com.tubb.smrv.SwipeHorizontalMenuLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:sml="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sml"
+            android:layout_width="match_parent"
+            sml:sml_auto_open_percent="0.2"
+            android:layout_height="wrap_content"
+            sml:sml_scroller_duration="250">
+
+        <TextView
+                android:textSize="17sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="停用"
+                android:orientation="horizontal"
+                android:background="#66ddff00"
+                android:id="@id/smMenuViewRight"
+                android:layout_width="60dp"
+                android:weightSum="1"
+                android:layout_height="match_parent"/>
+
+
+        <android.support.constraint.ConstraintLayout
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@id/smContentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hv_sel_gray_white">
+
+            <ImageView
+                android:layout_margin="10dp"
+                    android:id="@+id/iv_car"
+                    sml:layout_constraintLeft_toLeftOf="parent"
+                    sml:layout_constraintTop_toTopOf="parent"
+                sml:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/drawable_hv_sel_mana_car"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp" />
+
+            <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/tv_tv_carlicenseno"
+                    android:layout_marginLeft="15dp"
+                    sml:layout_constraintLeft_toRightOf="@+id/iv_car"
+                    sml:layout_constraintTop_toTopOf="@+id/iv_car"
+                    android:singleLine="true"
+                    android:textColor="@color/hv_color_text_title"
+                    android:textSize="@dimen/dimen_text_size_productionName"
+                    android:text="@{item_mana_car_my.carLicenseNo}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            <TextView
+                    android:id="@+id/tv_emptyweight"
+                    sml:layout_constraintLeft_toRightOf="@+id/tv_tv_carlicenseno"
+                    sml:layout_constraintBottom_toBottomOf="@+id/tv_tv_carlicenseno"
+                sml:layout_constraintTop_toTopOf="@+id/tv_tv_carlicenseno"
+                    android:singleLine="true"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/hv_color_text_title"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                    android:text='@{item_mana_car_my.emptyWeight+""}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    android:layout_marginRight="10dp"
+                    sml:layout_constraintRight_toRightOf="parent"
+                sml:layout_constraintBottom_toBottomOf="@+id/tv_tv_carlicenseno"
+                sml:layout_constraintTop_toTopOf="@+id/tv_tv_carlicenseno"
+                    android:singleLine="true"
+                    android:layout_marginLeft="17dp"
+                    android:textColor="@color/color_recylce_item_date_txtcolor"
+                    android:textSize="@dimen/dimen_text_size_carbrand"
+                    android:text="@{item_mana_car_my.carBrand}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                    android:id="@+id/tv_truename"
+                    android:layout_marginTop="15dp"
+                    sml:layout_constraintBottom_toBottomOf="@+id/iv_car"
+                    sml:layout_constraintLeft_toLeftOf="@+id/tv_tv_carlicenseno"
+                    android:singleLine="true"
+                    android:textColor="@color/color_grey_500"
+                    android:textSize="@dimen/dimen_text_size_unit"
+                    android:text="@{item_mana_car_my.trueNameCN}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    sml:layout_constraintBottom_toBottomOf="@+id/tv_truename"
+                    sml:layout_constraintLeft_toRightOf="@+id/tv_truename"
+                    android:singleLine="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/color_grey_500"
+                    android:textSize="@dimen/dimen_text_size_unit"
+                    android:text="@{item_mana_car_my.telCN}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            <View
+                    sml:layout_constraintBottom_toBottomOf="parent"
+                    sml:layout_constraintLeft_toLeftOf="parent"
+                    sml:layout_constraintRight_toRightOf="parent"
+                    android:background="@color/color_grey_300"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
+</layout>

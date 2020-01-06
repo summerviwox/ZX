@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item_main_msg_top"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@color/color_base"
+        android:layout_height="wrap_content">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ll_root"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/color_base"
+            android:layout_height="35dp">
+        </LinearLayout>
+
+        <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
+            android:layout_marginTop="-1dp"
+          android:layout_below="@+id/ll_root"
+            android:id="@+id/scrollmenu"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+    </RelativeLayout>
+</layout>

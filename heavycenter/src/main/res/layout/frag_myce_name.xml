@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_name"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            style_common:txt_mid ="编辑个人信息"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_name"
+            style_common:txt_maxlenth="11"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "姓名"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:visibility="gone"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "手机号"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:background="@color/color_item_content"
+            android:paddingLeft="@dimen/dimen_item_content_left_padding"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_h">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_marginLeft="8dp"
+                android:text="角色"
+                android:textSize="15dp"
+                android:textColor="@color/color_item_content_left_txt_color"
+                android:gravity="center_vertical"
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+
+                android:singleLine="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="15sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:corner="3dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_red_800"
+                style_common:stroke_two="2dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="5dp"
+                style_common:color_txt_two="@color/white"
+                style_common:boo_one="false"
+                android:text="用户"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginLeft="10dp"
+
+                android:singleLine="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="15sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:corner="3dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_red_800"
+                style_common:stroke_two="2dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="5dp"
+                style_common:color_txt_two="@color/white"
+                style_common:boo_one="false"
+                android:text="管理员"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:text="由管理员审核与2017/12/29 10:10"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

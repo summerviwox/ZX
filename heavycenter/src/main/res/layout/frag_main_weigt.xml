@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:style_toptypeview="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="frag_main_weigt"
+            type="com.siweisoft.heavycenter.data.netd.jpush.WeightMsg.MessageBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_hv_base"
+        android:orientation="vertical">
+
+
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="40dp" />
+
+
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline1"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_carno"
+                android:gravity="right|center_vertical"
+                android:layout_weight="1"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="@{frag_main_weigt.order.carLicenseNo}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="@{frag_main_weigt.order.trueName}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_tel"
+                android:gravity="center_vertical|left"
+                android:layout_weight="1"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="@{frag_main_weigt.order.tel}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toTopOf="@+id/bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/lab_pz"
+        android:id="@+id/lab_mz"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="13sp"
+            android:text="毛重"
+            android:layout_height="wrap_content" />
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_mz"
+            app:layout_constraintRight_toLeftOf="@+id/lab_kc"
+            android:id="@+id/lab_pz"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="13sp"
+            android:text="皮重"
+            android:layout_height="wrap_content" />
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_pz"
+            app:layout_constraintRight_toLeftOf="@+id/lab_jz"
+            android:id="@+id/lab_kc"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="13sp"
+            android:text="扣除"
+            android:layout_height="wrap_content" />
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_kc"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:id="@+id/lab_jz"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="13sp"
+            android:text="净重"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toTopOf="@+id/lab_mz"
+           app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_pz"
+            android:id="@+id/tv_mz"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:text="2333"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_mz"
+            app:layout_constraintRight_toLeftOf="@+id/tv_kc"
+            android:id="@+id/tv_pz"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_yelll"
+            android:textSize="26sp"
+            android:text="2333"
+            android:layout_height="wrap_content" />
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_pz"
+            app:layout_constraintRight_toLeftOf="@+id/tv_jz"
+            android:id="@+id/tv_kc"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:text="2333"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+                android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_kc"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/tv_jz"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:text="2333"
+            android:layout_height="wrap_content" />
+
+
+
+        <com.siweisoft.heavycenter.module.view.weight.WeightView
+            android:id="@+id/weight"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_mz"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/weight"
+            app:layout_constraintBottom_toBottomOf="@+id/weight"
+            android:id="@+id/tv_weight"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_hv_yelll"
+            android:text="906.5"
+            android:textSize="55sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_hv_yelll"
+            android:text="吨"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

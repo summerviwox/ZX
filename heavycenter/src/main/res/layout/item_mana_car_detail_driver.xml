@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_mana_car_detail_driver"
+            type="com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingTop="12dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="12dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_check"
+                android:background="@drawable/bg_hv_check"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/color_grey_500"
+                android:text="@{item_mana_car_detail_driver.trueName}"
+                android:id="@+id/tv_com_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/color_grey_500"
+                android:text="@{item_mana_car_detail_driver.tel}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/divide"
+            android:background="@color/color_item_content_gap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_gap_size"/>
+    </RelativeLayout>
+</layout>

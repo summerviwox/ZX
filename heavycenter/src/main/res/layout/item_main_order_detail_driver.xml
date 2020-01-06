@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_main_order_detail_driver"
+            type="com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean.CarInfoRes" />
+    </data>
+
+
+
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
+        android:layout_width="match_parent"
+        sml:sml_auto_open_percent="0.2"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_height="45dp"
+        sml:sml_scroller_duration="250">
+
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="移除"
+            android:orientation="horizontal"
+            android:background="@color/color_hv_red"
+            android:id="@id/smMenuViewRight"
+            android:layout_width="70dp"
+            android:weightSum="1"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:paddingLeft="@dimen/dimen_item_content_left_padding"
+            android:id="@id/smContentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="15sp"
+                    android:text="@{item_main_order_detail_driver.carLicenseNo}"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="15sp"
+                    android:layout_marginRight="10dp"
+                    android:text='@{item_main_order_detail_driver.maxCapacity+"t"}'
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="15sp"
+                    android:text="@{item_main_order_detail_driver.trueName}"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="15sp"
+                    android:text="@{item_main_order_detail_driver.tel}"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_grey_300"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+        </RelativeLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
+</layout>

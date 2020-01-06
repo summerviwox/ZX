@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_strans"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_block_back"
+        android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            app:iv_left ="@drawable/icon_hv_back"
+            app:txt_mid ="运输单"
+            app:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:id="@+id/rl_trans"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
+            app:srlEnableOverScrollBounce="false"
+            app:srlEnableAutoLoadmore="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.android.lib.view.LinearRecycleView
+                android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            <include
+                android:visibility="gone"
+                android:id="@+id/search"
+                layout="@layout/frag_main_trans_search"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

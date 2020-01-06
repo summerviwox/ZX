@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_myce_unit_new_area"
+            type="com.siweisoft.heavycenter.data.netd.other.city.CityResBean.ProvinceListBean" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@color/white"
+>
+
+
+    <LinearLayout
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/ll_pros"
+        android:background="@drawable/bg_hv_sharp2_gray_stroke"
+        android:paddingRight="5dp"
+        android:paddingLeft="7dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.siweisoft.heavycenter.module.view.image.TypeImage
+            android:padding="5dp"
+            android:id="@+id/iv_state"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:id="@+id/tv_name"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:textColor="@color/color_grey_700"
+            android:layout_marginLeft="5dp"
+            android:text="@{item_myce_unit_new_area.value}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:src="@drawable/icon_arraw"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</layout>

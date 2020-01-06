@@ -1,0 +1,71 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+
+          package="com.siweisoft.heavycenter">
+
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <application
+            android:hardwareAccelerated="true"
+            android:launchMode="singleInstance"
+            android:name=".HCApp"
+            android:icon="@mipmap/ic_launcher_round"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppBaseTheme"
+            tools:replace="android:label,android:theme">
+
+        <activity android:name=".module.welc.welc.WelcAct"
+            android:launchMode="singleInstance"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".module.acct.acct.AcctAct"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+                  android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".module.main.main.MainAct"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+                  android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".module.view.scan.ScanAct"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+
+
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="zRI2ehMENx33kDG1qTr1GhXofbesLYWj" />
+
+        <service
+                android:name="com.baidu.location.f"
+                android:enabled="true"
+                android:process=":remote" >
+        </service>
+
+        <receiver android:name=".data.netd.jpush.PushGetter"
+                  android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="com.siweisoft.heavycenter" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

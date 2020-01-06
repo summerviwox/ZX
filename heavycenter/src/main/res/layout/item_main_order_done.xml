@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_main_order_done"
+            type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+        <import type="android.view.View" />
+        <import type="com.android.lib.util.StringUtil"/>
+    </data>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_hv_sel_dark_light"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_doneorder"
+        android:transitionName="doingorder">
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            tools:text="混凝土"
+            android:includeFontPadding="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/tv_goodname"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            android:text="@{item_main_order_done.productNameAndSpecification}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <TextView
+
+            android:padding="1dp"
+            tools:text="来自"
+            android:background="@{item_main_order_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:includeFontPadding="false"
+            app:layout_constraintTop_toTopOf="@+id/tv_companyname"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_companyname"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
+            android:id="@+id/tv_type"
+            android:singleLine="true"
+            android:textColor="@color/color_text_type"
+            android:textSize="@dimen/dimen_text_size_type"
+
+            android:text="@{item_main_order_done.type}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:includeFontPadding="false"
+            tools:text="王尼玛"
+            android:layout_marginTop="7dp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
+            android:id="@+id/tv_companyname"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:text="@{item_main_order_done.shortAccessComName}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <LinearLayout
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@{item_main_order_done.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                tools:text="总计:"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:includeFontPadding="false"
+                android:id="@+id/tv_totalcarnum"
+                android:singleLine="true"
+                android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_plannum"
+                android:text="@{item_main_order_done.totalRecordCN}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                tools:text="计划:"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:includeFontPadding="false"
+                android:id="@+id/tv_plan"
+                android:singleLine="true"
+                android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_plannum"
+                android:text="@{item_main_order_done.planNumberCN}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <TextView
+            tools:text="实发:"
+            android:id="@+id/tv_send"
+            android:layout_marginTop="7dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_companyname"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
+            android:layout_gravity="center_vertical"
+            android:gravity="bottom|left"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:text="@{item_main_order_done.actualFhCN}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <LinearLayout
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="bottom"
+                android:gravity="bottom|right"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:text="实收："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:includeFontPadding="false"
+                android:id="@+id/tv_ss"
+                android:layout_gravity="bottom|left"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="19sp"
+                android:text='@{item_main_order_done.actualSh+"t"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <TextView
+            tools:text="盈亏:"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send"
+            android:layout_gravity="bottom"
+            android:gravity="bottom|right"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:text="@{item_main_order_done.YKCN}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

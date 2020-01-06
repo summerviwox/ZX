@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item_main_store_detail_top"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/ll_current"
+            android:visibility="visible"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/icon_hv_main_store_tip_ld"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="当前: 1234.6t"
+                android:singleLine="true"
+                android:visibility="visible"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_current"
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+        <com.siweisoft.heavycenter.module.view.progress.ProgressView
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_current"
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/progress"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center_vertical"
+            android:id="@+id/ll_min"
+            android:background="@drawable/icon_hv_main_store_lt"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                tools:text="125.6t"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:id="@+id/tv_minwuliao"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                tools:text="125.6t"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:id="@+id/tv_minstore"
+                android:textColor="@color/color_grey_500"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ll_max"
+            android:gravity="center_vertical"
+            android:background="@drawable/icon_hv_main_store_rt"
+            app:layout_constraintTop_toBottomOf="@+id/progress"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                tools:text="125.6t"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:singleLine="true"
+                android:id="@+id/tv_maxwuliao"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                tools:text="125.6t"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_maxstore"
+                android:textSize="12sp"
+                android:textColor="@color/color_grey_500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <data>
+            <variable
+                name="item_main_order_detail_done"
+                type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+            <import type="com.android.lib.util.StringUtil"/>
+        </data>
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:paddingLeft="10dp"
+            android:paddingBottom="20dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:id="@+id/ll_doneorder"
+            android:transitionName="doingorder">
+
+            <com.siweisoft.heavycenter.module.view.text.MarqTextView
+                android:includeFontPadding="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/tv_goodname"
+                android:singleLine="true"
+                android:text="@{item_main_order_detail_done.productNameAndSpecification}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_text_size_productionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:padding="1dp"
+                android:text="@{item_main_order_detail_done.type}"
+                android:includeFontPadding="false"
+                app:layout_constraintTop_toTopOf="@+id/tv_companyname"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_companyname"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
+                android:id="@+id/tv_type"
+                android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:singleLine="true"
+                android:textColor="@color/color_text_type"
+                android:textSize="@dimen/dimen_text_size_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:includeFontPadding="false"
+                android:text="@{item_main_order_detail_done.accessComName}"
+                android:layout_marginTop="7dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_type"
+                app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
+                android:id="@+id/tv_companyname"
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_text_size_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_goodname"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:includeFontPadding="false"
+                android:id="@+id/tv_totalcarnum"
+                android:singleLine="true"
+                android:text="@{item_main_order_detail_done.totalRecordCN}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_plannum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <TextView
+                android:layout_marginTop="7dp"
+               app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_type"
+                android:id="@+id/tv_plan"
+                android:layout_gravity="bottom|left"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:text="@{item_main_order_detail_done.planNumberCN}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:layout_marginTop="7dp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_plan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_plan"
+                android:id="@+id/tv_sf"
+                android:layout_gravity="bottom|left"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:text="@{item_main_order_detail_done.actualFhCN}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/shlab"
+                android:layout_marginTop="7dp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_yk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_yk"
+                android:layout_gravity="bottom"
+                android:gravity="bottom|right"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:text="实收："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+               app:layout_constraintLeft_toRightOf="@+id/shlab"
+                app:layout_constraintBottom_toBottomOf="@+id/shlab"
+                android:includeFontPadding="false"
+                android:id="@+id/tv_ss"
+                android:layout_gravity="bottom|left"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="18sp"
+                android:text='@{item_main_order_detail_done.actualSh+"t"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_plan"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_plan"
+                android:id="@+id/tv_yk"
+                android:layout_gravity="bottom|right"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{item_main_order_detail_done.YKCN}"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </layout>

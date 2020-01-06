@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:CircleImageView_civ="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item_myce_head"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/color_base"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_hv_myce_bg"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            style_common:layout_constraintEnd_toEndOf="parent"
+            style_common:layout_constraintStart_toStartOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:color_bg="@android:color/transparent"
+            style_common:iv_right="@drawable/icon_hv_myce_code"
+            style_common:iv_right2="@android:color/transparent"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style_common:layout_constraintGuide_begin="132dp" />
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_head"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/icon_hv_myce_head"
+            android:transitionName="cirlceimageview"
+            app:civ_border_color="#11ffffff"
+            app:civ_border_width="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            style_common:srcCompat="@drawable/bg_cricle_yel" />
+
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="18721654587"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            style_common:layout_constraintBottom_toTopOf="@+id/tv_role"
+            style_common:layout_constraintLeft_toRightOf="@+id/iv_head"
+            />
+
+        <TextView
+            style_common:layout_constraintBottom_toTopOf="@+id/guideline3"
+            style_common:layout_constraintLeft_toRightOf="@+id/iv_head"
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+         />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:singleLine="true"
+            android:text="18741414141"
+            android:textColor="@color/color_grey_400"
+            android:textSize="17sp"
+            style_common:layout_constraintTop_toBottomOf="@+id/tv_role"
+            style_common:layout_constraintLeft_toRightOf="@+id/iv_head" />
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/iv_nameedit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/icon_hv_myce_edit"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/tv_name"
+/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

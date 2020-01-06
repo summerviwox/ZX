@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_order_new"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+
+
+        <com.android.lib.view.title.TitleView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            app:txt_mid ="新建订单"
+            app:iv_left ="@drawable/icon_hv_back"
+            app:iv_right = "@drawable/icon_hv_scan"
+            app:iv_right2 = "@drawable/icon_hv_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/tv_left"
+            android:layout_marginLeft="15dp"
+            android:text="订单类型"
+            android:textSize="17dp"
+            android:textColor="@color/hv_color_text_title"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp" />
+
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/tv_left"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_left"
+            app:layout_constraintLeft_toRightOf="@+id/tv_left"
+            android:textColor="@color/color_white_yell"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="发货"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_send"
+            android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+
+            app:layout_constraintTop_toTopOf="@+id/tv_left"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_left"
+            app:layout_constraintLeft_toRightOf="@+id/tv_send"
+            android:textColor="@color/color_white_blue"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="收货"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_receipt"
+            android:background="@drawable/bg_hv_sel_sharp10_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <View
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_left"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/divide"
+            android:background="@color/color_item_content_gap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_gap_size"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/divide"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_addr"
+            app:txt_left="送货地址"
+            app:txt_hint="请选择"
+            app:iv_right="@drawable/icon_arraw"
+            app:boo_edit="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_addr"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_wuliname"
+            app:txt_left = "物料名称"
+            app:txt_hint ="请选择"
+            app:iv_right = "@drawable/icon_arraw"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_wuliname"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_wuliguige"
+            app:txt_left = "物料规格"
+            app:txt_hint ="请选择"
+            app:iv_right = "@drawable/icon_arraw"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_wuliguige"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_unit"
+            app:txt_left = "发货单位"
+            app:txt_hint ="请选择"
+            app:iv_right = "@drawable/icon_arraw"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_unit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_plannum"
+            app:inputType="3"
+            app:txt_left = "计划数量"
+            app:iv_right = "@android:color/transparent"
+            app:boo_edit = "true"
+            app:txt_maxlenth="10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_plannum"
+            app:layout_constraintBottom_toBottomOf="@+id/item_plannum"
+            android:textSize="17sp"
+            android:textColor="@color/color_hv_yelll"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_plannum"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_starttime"
+            app:txt_left="计划开始时间"
+            app:txt_hint="请选择"
+            app:iv_right="@drawable/icon_arraw"
+            app:boo_edit="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            app:layout_constraintTop_toBottomOf="@+id/item_starttime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_rule"
+            app:txt_left = "备用签收规则"
+            app:txt_hint ="请选择"
+            app:iv_right = "@drawable/icon_arraw"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

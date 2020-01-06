@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_myce_unit_bind"
+            type="com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:background="@color/white"
+        android:foreground="?android:attr/selectableItemBackground"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/iv_sel"
+            android:background="@drawable/bg_hv_check"
+            android:layout_width="17dp"
+            android:layout_height="17dp" />
+
+
+        <TextView
+            android:includeFontPadding="false"
+            android:gravity="bottom"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_sel"
+            app:layout_constraintLeft_toRightOf="@+id/iv_sel"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:textColor="@color/color_grey_700"
+            android:text="@{item_myce_unit_bind.companyName}"
+            android:id="@+id/tv_com_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="3dp"
+            android:gravity="bottom"
+            app:layout_constraintTop_toBottomOf="@+id/tv_com_name"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_com_name"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:textColor="@color/gray"
+            android:text="@{item_myce_unit_bind.contactName}"
+            android:id="@+id/tv_mana_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/divide"
+            android:background="@color/color_item_content_gap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_gap_size"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

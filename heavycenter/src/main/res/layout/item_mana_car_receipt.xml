@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_mana_car_receipt"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            >
+
+
+            <ImageView
+                android:src="@drawable/icon_hv_mana_car"
+                android:layout_width="55dp"
+                android:layout_height="55dp" />
+
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+                        android:text="沪A12345"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_marginLeft="14dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                        android:text="20T"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"/>
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:text="奔驰"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:singleLine="true"
+                        android:textColor="@color/color_hv_txt_dark"
+                        android:textSize="@dimen/dimen_recylce_item_content_txtsize"
+                        android:text="驾驶员：王先生"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/color_hv_txt_dark"
+                        android:textSize="15sp"
+                        android:text="联系电话：1111111111"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_grey_500"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+</layout>

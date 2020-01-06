@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_hv_base">#262932</color>
+    <color name="color_base_txt_heavycenter_y">#F6AB12</color>
+    <color name="color_base_txt_heavycenter_n">#687189</color>
+    <color name="color_hv_txt_dark">#cccccc</color>
+
+    <color name="color_base_statusbar">@color/color_hv_base</color>
+
+
+    <color name="color_base">@color/color_hv_base</color>
+
+
+    <color name="color_hv_yelll">#f6ab12</color>
+
+
+    <color name="color_item_main_trans_dark">#2e313c</color>
+    <color name="color_item_main_trans_light">#373b48</color>
+
+    <color name="color_hv_blue">#30e5a3</color>
+
+    <color name="color_hv_weightview_start">#f6ab12</color>
+
+    <color name="color_hv_red">#ff6600</color>
+
+    <color name="color_hv_weightview_end">#30e5a3</color>
+</resources>

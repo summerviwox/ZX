@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <declare-styleable name="style_toptypeview">
+        <attr name="txts" format="string"/>
+    </declare-styleable>
+
+    <dimen name="dimen_text_size_15">15sp</dimen>
+    <dimen name="dimen_text_size_20">20sp</dimen>
+
+    <dimen name="dimens_base_bottom">50dp</dimen>
+    <dimen name="dimen_text_size_productionName">15.5sp</dimen>
+    <dimen name="dimen_text_size_unit">14sp</dimen>
+    <dimen name="dimen_text_size_datetime">12.5sp</dimen>
+    <dimen name="dimen_text_size_plannum">10sp</dimen>
+    <dimen name="dimen_text_size_type">10sp</dimen>
+    <dimen name="dimen_text_size_weightnum">13sp</dimen>
+
+    <dimen name="dimen_text_size_weight">14sp</dimen>
+    <dimen name="dimen_text_size_carbrand">14sp</dimen>
+    <dimen name="dimen_text_size_carno">11sp</dimen>
+    <dimen name="dimen_text_size_orderweight">18sp</dimen>
+
+    <color name="color_text_type">@color/color_grey_900</color>
+
+
+    <integer name="anim_duration_very_long">1500</integer>
+    <integer name="anim_duration_long">500</integer>
+    <integer name="anim_duration_medium">300</integer>
+
+
+    <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/red</item>
+        <item name="android:colorPrimaryDark">@color/red</item>
+        <item name="android:colorAccent">@color/red</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorPrimaryInverse">@color/red</item>
+        <item name="android:statusBarColor">@color/red</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
+        <item name="android:windowBackground">@color/red</item>
+    </style>
+</resources>

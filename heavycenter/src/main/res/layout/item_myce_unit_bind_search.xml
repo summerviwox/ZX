@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_myce_unit_bind_search"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/swipe"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_hv_sharp20_oval_gray_solid"
+>
+
+        <EditText
+            android:gravity="center_vertical"
+            android:id="@+id/et_name"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <ImageView
+          android:padding="5dp"
+            android:id="@+id/iv_search"
+            android:src="@drawable/icon_hv_search"
+            android:layout_width="50dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    </LinearLayout>
+</layout>

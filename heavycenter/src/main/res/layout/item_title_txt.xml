@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item_title_txt"
+            type="com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean.BranchCompanyListBean" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:id="@+id/tv_txt"
+            android:gravity="center"
+            android:textColor="@color/color_grey_700"
+            android:text="@{item_title_txt.abbreviationName}"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/color_item_content_gap"
+            android:layout_width="100dp"
+            android:layout_height="1px"/>
+    </LinearLayout>
+</layout>

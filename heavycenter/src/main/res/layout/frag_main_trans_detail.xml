@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.android.lib.util.StringUtil"/>
+        <variable
+            name="frag_main_trans_detail"
+            type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
+        <import type="android.view.View"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.android.lib.view.title.TitleView
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:iv_left="@drawable/icon_hv_back"
+            style_common:iv_right="@drawable/icon_hv_scan"
+            style_common:txt_mid="运输单详情"/>
+
+
+
+
+
+        <android.support.constraint.ConstraintLayout
+        android:visibility="@{frag_main_trans_detail==null?View.INVISIBLE:View.VISIBLE}"
+        style_common:layout_constraintTop_toBottomOf="@+id/title"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintRight_toRightOf="parent"
+        style_common:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/line_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp"/>
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp"/>
+
+
+        <ImageView
+           style_common:layout_constraintTop_toTopOf="parent"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_hv_main_order_detail"/>
+
+
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:includeFontPadding="false"
+            android:gravity="top"
+            tools:text="混凝土"
+            android:layout_marginTop="20dp"
+            android:id="@+id/tv_productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.productNameAndSpecification}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_productionName"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+        <TextView
+            android:visibility="@{frag_main_trans_detail==null?View.INVISIBLE:View.VISIBLE}"
+            tools:text="第一车"
+            android:text="@{frag_main_trans_detail.carNumberCN2}"
+            android:id="@+id/tv_carno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{frag_main_trans_detail.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_plannum"
+            app:layout_constraintRight_toRightOf="@+id/line_right"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="13dp"
+            />
+
+
+
+        <TextView
+
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName"
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="1dp"
+            android:singleLine="true"
+            android:textSize="@dimen/dimen_text_size_type"
+            android:visibility="@{frag_main_trans_detail==null?View.INVISIBLE:View.VISIBLE}"
+            tools:text="来自"
+            android:background="@{frag_main_trans_detail.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:includeFontPadding="false"
+            android:text="@{frag_main_trans_detail.type}"
+            android:textColor="@color/color_grey_900"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_duimian"
+   />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.accessComName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:layout_marginLeft="15dp"
+            style_common:layout_constraintLeft_toRightOf="@+id/type"
+            style_common:layout_constraintTop_toTopOf="@+id/type"
+            style_common:layout_constraintBottom_toBottomOf="@+id/type"/>
+
+
+        <TextView
+            android:id="@+id/tv_carlicenseno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.carLicenseNo}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_companyname"/>
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.trueName}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toRightOf="@+id/tv_carlicenseno"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.tel}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toRightOf="@+id/tv_name"/>
+
+
+
+
+
+        <View
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            android:background="@color/white"
+            android:id="@+id/block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_delivenum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{frag_main_trans_detail.develiverNumCN}"
+            android:textColor="@color/color_hv_blue"
+            android:textSize="23sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/line_left"
+            app:layout_constraintRight_toLeftOf="@+id/tv_yk"
+            app:layout_constraintTop_toTopOf="@+id/block"/>
+
+        <TextView
+            tools:text="1500t"
+            android:gravity="center"
+            android:id="@+id/tv_yk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{frag_main_trans_detail.YKCN}"
+            android:textColor="@color/color_hv_red"
+            android:textSize="23sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delivenum"
+            app:layout_constraintLeft_toRightOf="@+id/tv_delivenum"
+            app:layout_constraintRight_toLeftOf="@+id/tv_receipt"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_receipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{frag_main_trans_detail.receiveNumCN}"
+
+            android:textColor="@color/color_hv_yelll"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delivenum"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_yk"
+            app:layout_constraintRight_toRightOf="@+id/line_right"/>
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_delive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="实发"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintRight_toLeftOf="@+id/tv_lab_yk"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivenum"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_yk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="盈亏"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_lab_delive"
+            app:layout_constraintRight_toLeftOf="@+id/tv_lab_receipt"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_receipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="实收"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_lab_yk"
+            app:layout_constraintRight_toLeftOf="@+id/line_right"/>
+
+
+        <View
+            android:id="@+id/line"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lab_delive"
+            android:background="@color/color_grey_300"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/line"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/sfline"
+           style_common:layout_constraintTop_toTopOf="@+id/line"
+            style_common:layout_constraintBottom_toBottomOf="@+id/line"
+            style_common:layout_constraintLeft_toLeftOf="@+id/tv_lab_delive"
+            style_common:layout_constraintRight_toRightOf="@+id/tv_lab_delive"
+            android:background="@drawable/bg_hv_sharp2_blue_solid"
+            android:layout_width="0dp"
+            android:layout_height="4dp"/>
+
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/ssline"
+            style_common:layout_constraintTop_toTopOf="@+id/line"
+            style_common:layout_constraintBottom_toBottomOf="@+id/line"
+            style_common:layout_constraintLeft_toLeftOf="@+id/tv_lab_receipt"
+            style_common:layout_constraintRight_toRightOf="@+id/tv_lab_receipt"
+            android:background="@drawable/bg_hv_sharp2_yell_solid"
+            android:layout_width="0dp"
+            android:layout_height="2dp"/>
+    </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

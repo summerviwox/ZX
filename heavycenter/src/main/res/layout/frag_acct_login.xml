@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_acct_login"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/icon_hv_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
+            android:text="账号密码登录"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            style_common:layout_constraintTop_toBottomOf="@+id/title"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:id="@+id/phone"
+            style_common:txt_maxlenth = "11"
+            style_common:txt_mid = "请输入用户名"
+            style_common:iv_right = "@drawable/icon_hv_clear"
+            style_common:iv_left="@drawable/icon_hv_phone"
+            android:layout_marginTop="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            style_common:inputType="0"
+            android:textSize="16sp"
+            />
+
+
+        <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+            style_common:layout_constraintTop_toBottomOf="@+id/phone"
+            style_common:layout_constraintLeft_toLeftOf="@+id/phone"
+            style_common:layout_constraintRight_toRightOf="@+id/phone"
+            style_common:inputType="1"
+            style_common:iv_right = "@drawable/icon_hv_clear"
+            style_common:txt_mid = "请输入密码"
+            style_common:iv_left="@drawable/icon_hv_pwd"
+            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:id="@+id/pwd"
+            android:textSize="16sp"
+            />
+
+
+        <TextView
+            style_common:layout_constraintTop_toBottomOf="@+id/pwd"
+            style_common:layout_constraintRight_toRightOf="@+id/pwd"
+            android:id="@+id/repwd"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            android:text="忘记密码"
+            android:textColor="@color/color_grey_500"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            style_common:layout_constraintLeft_toLeftOf="@+id/pwd"
+            style_common:layout_constraintRight_toRightOf="@+id/pwd"
+            style_common:layout_constraintTop_toBottomOf="@+id/repwd"
+            android:gravity="center"
+            android:id="@+id/login"
+            android:text="登录"
+            android:layout_marginTop="30dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:visibility="visible"
+            style_common:color_one="@color/color_hv_yelll"
+            style_common:stroke="0dp"
+            style_common:color_stroke="@color/red"
+            style_common:corner="20dp"
+            style_common:color_txt="@color/white"
+
+            style_common:color_two="@color/color_grey_400"
+            style_common:stroke_two="0dp"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:corner_two="20dp"
+            style_common:color_txt_two="@color/color_hv_yelll"
+            style_common:boo_one="true"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            style_common:layout_constraintTop_toBottomOf="@+id/login"
+            style_common:layout_constraintLeft_toLeftOf="@+id/login"
+            style_common:layout_constraintRight_toRightOf="@+id/login"
+            android:id="@+id/regist"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:text="新用户注册"
+            android:textColor="@color/color_press_yell_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:id="@+id/iv_weibo"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon_hv_weibo"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+
+        <ImageView
+            style_common:layout_constraintRight_toLeftOf="@+id/iv_weibo"
+            style_common:layout_constraintTop_toTopOf="@+id/iv_weibo"
+            style_common:layout_constraintBottom_toBottomOf="@+id/iv_weibo"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/icon_hv_qq"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+
+        <ImageView
+            style_common:layout_constraintLeft_toRightOf="@+id/iv_weibo"
+            style_common:layout_constraintTop_toTopOf="@+id/iv_weibo"
+            style_common:layout_constraintBottom_toBottomOf="@+id/iv_weibo"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_hv_weixin"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_marginBottom="15dp"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintBottom_toTopOf="@+id/iv_weibo"
+            android:text="其他登录方式"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            style_common:layout_constraintTop_toTopOf="@+id/tv1"
+            style_common:layout_constraintBottom_toBottomOf="@+id/tv1"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toLeftOf="@+id/tv1"
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
+
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintTop_toTopOf="@+id/tv1"
+            style_common:layout_constraintBottom_toBottomOf="@+id/tv1"
+            style_common:layout_constraintLeft_toRightOf="@+id/tv1"
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

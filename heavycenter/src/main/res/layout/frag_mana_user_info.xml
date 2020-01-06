@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_mana_user_info"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/head"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_hv_myce_head"
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
+        </RelativeLayout>
+
+        <View
+            android:background="@color/color_grey_200"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_name"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "姓名"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_phone"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "手机号"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_driverno"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "驾证号"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:clickable="true"
+            android:visibility="gone"
+            android:id="@+id/ll_role"
+            android:background="@color/color_item_content"
+            android:paddingLeft="@dimen/dimen_item_content_left_padding"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_h">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_marginLeft="8dp"
+                android:text="角色"
+                android:textSize="15dp"
+                android:textColor="@color/color_item_content_left_txt_color"
+                android:gravity="center_vertical"
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:id="@+id/tv_user"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                android:textColor="@color/color_white_yell"
+                android:textSize="16sp"
+                android:text="用户"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/tv_mana"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                android:textColor="@color/color_white_yell"
+                android:textSize="16sp"
+                android:text="管理员"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+
+
+        <ImageView
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:layout_marginLeft="60dp"
+            android:id="@+id/iv_carlicenseno"
+            android:layout_width="150dp"
+            android:layout_height="100dp" />
+
+
+
+<LinearLayout
+    android:background="@color/color_grey_200"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/color_grey_400"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+    </LinearLayout>
+</layout>

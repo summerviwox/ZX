@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_mana_user"
+            type="com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean.ResultsBean" />
+        <import type="com.android.lib.util.StringUtil"/>
+    </data>
+
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
+
+        android:layout_width="match_parent"
+        sml:sml_auto_open_percent="0.2"
+        android:layout_height="80dp"
+        sml:sml_scroller_duration="250">
+
+
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="解除\n绑定"
+            android:orientation="horizontal"
+            android:background="@color/red"
+            android:id="@id/smMenuViewRight"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"/>
+        <RelativeLayout
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@color/white"
+            android:id="@id/smContentView"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:src="@drawable/drawable_hv_mana_user"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp" />
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:singleLine="true"
+                            android:textColor="@color/hv_color_text_title"
+                            android:textSize="@dimen/dimen_text_size_unit"
+                            android:text="@{StringUtil.getStr(item_mana_user.trueName)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/color_grey_500"
+                            android:textSize="@dimen/dimen_text_size_unit"
+                            android:text="@{StringUtil.getStr(item_mana_user.tel)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/tv_state"
+                            android:background="@drawable/bg_hv_sharp8_yell_stroke"
+                            android:singleLine="true"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/color_hv_red"
+                            android:textSize="@dimen/dimen_text_size_plannum"
+                            android:text="在线"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_des"
+                        android:layout_marginTop="5dp"
+                        android:singleLine="true"
+                            android:textColor="@color/gray"
+                        android:textSize="@dimen/dimen_text_size_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_item_content_gap"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+        </RelativeLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
+</layout>

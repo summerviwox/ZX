@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+    <data>
+        <variable
+            name="frag_main_msgs"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:elevation="2dp"
+        android:background="@color/color_base"
+        style_common:layout_constraintTop_toTopOf="parent"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="vertical"
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_person"
+            style_common:txt_mid ="消息"
+            style_common:iv_right = "@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+            android:id="@+id/topview"
+            style_toptypeview:txts="全部,运输,车辆,公告,系统"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/top"
+            android:orientation="vertical"
+            android:id="@+id/ll_cntent"
+            android:layout_centerInParent="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
